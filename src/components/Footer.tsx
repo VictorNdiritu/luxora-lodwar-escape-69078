@@ -1,4 +1,4 @@
-import logo from "@/assets/luxora-logo.jpg";
+import logo from "@/assets/luxora-logo.png";
 
 export const Footer = () => {
   return (
@@ -9,7 +9,7 @@ export const Footer = () => {
             <img 
               src={logo} 
               alt="Luxora Hotel Lodwar" 
-              className="h-16 w-auto object-contain mb-4 brightness-0 invert" 
+              className="h-16 w-auto object-contain mb-4" 
             />
             <p className="text-primary-foreground/80 text-center md:text-left">
               Your gateway to luxury in Lodwar
