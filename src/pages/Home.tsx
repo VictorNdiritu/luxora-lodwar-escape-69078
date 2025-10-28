@@ -72,7 +72,7 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Our Accommodations
+              Our Accommodation
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Choose from our carefully designed Deluxe and Superior rooms, each offering modern amenities and exceptional comfort for your stay.
