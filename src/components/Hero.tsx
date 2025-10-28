@@ -1,14 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-hotel.jpg";
 
 export const Hero = () => {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
@@ -32,36 +27,28 @@ export const Hero = () => {
           Experience luxury and comfort adjacent to Lodwar Airport
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button 
-            variant="gold" 
-            size="lg"
-            onClick={() => scrollToSection("rooms")}
-            className="text-base md:text-lg px-8 py-6"
-          >
-            Explore Our Rooms
-            <ArrowRight className="ml-2" />
-          </Button>
-          <Button 
-            variant="outline" 
-            size="lg"
-            onClick={() => scrollToSection("contact")}
-            className="text-base md:text-lg px-8 py-6 bg-card/20 backdrop-blur-sm border-primary-foreground/30 text-primary-foreground hover:bg-card/30"
-          >
-            Contact Us
-          </Button>
+          <Link to="/rooms">
+            <Button 
+              variant="gold" 
+              size="lg"
+              className="text-base md:text-lg px-8 py-6"
+            >
+              Explore Our Rooms
+              <ArrowRight className="ml-2" />
+            </Button>
+          </Link>
+          <Link to="/contact">
+            <Button 
+              variant="outline" 
+              size="lg"
+              className="text-base md:text-lg px-8 py-6 bg-card/20 backdrop-blur-sm border-primary-foreground/30 text-primary-foreground hover:bg-card/30"
+            >
+              Reserve Now
+            </Button>
+          </Link>
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <button
-          onClick={() => scrollToSection("about")}
-          className="text-primary-foreground/60 hover:text-primary-foreground transition-colors"
-        >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-          </svg>
-        </button>
-      </div>
     </section>
   );
 };

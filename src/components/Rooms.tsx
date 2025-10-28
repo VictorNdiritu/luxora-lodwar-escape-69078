@@ -36,13 +36,9 @@ const roomCategories = [
   },
 ];
 
+import { Link } from "react-router-dom";
+
 export const Rooms = () => {
-  const scrollToContact = () => {
-    const element = document.getElementById("contact");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
 
   return (
     <section id="rooms" className="py-20 bg-background">
@@ -108,9 +104,11 @@ export const Rooms = () => {
                   ))}
                 </div>
 
-                <Button variant="luxury" className="w-full" onClick={scrollToContact}>
-                  Reserve Now
-                </Button>
+                <Link to="/contact" className="block">
+                  <Button variant="luxury" className="w-full">
+                    Reserve Now
+                  </Button>
+                </Link>
               </div>
             </div>
           ))}

@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
+import { Button } from "@/components/ui/button";
 import { Plane, Clock, MapPin, Info } from "lucide-react";
 
 const ContactPage = () => {
@@ -66,9 +67,9 @@ const ContactPage = () => {
               </div>
             </div>
 
-            <div className="max-w-4xl mx-auto bg-card p-8 rounded-lg shadow-lg">
+            <div className="max-w-4xl mx-auto bg-card p-8 rounded-lg shadow-lg mb-12">
               <h3 className="text-2xl font-bold text-foreground mb-6">Important Travel Tips</h3>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid md:grid-cols-2 gap-6 mb-8">
                 <div>
                   <h4 className="font-semibold text-foreground mb-3">What to Pack</h4>
                   <ul className="space-y-2 text-muted-foreground">
@@ -76,6 +77,8 @@ const ContactPage = () => {
                     <li>• Sun protection (hat, sunscreen)</li>
                     <li>• Comfortable walking shoes</li>
                     <li>• Camera for wildlife photography</li>
+                    <li>• Reusable water bottle</li>
+                    <li>• Power adapter (UK-style plugs)</li>
                   </ul>
                 </div>
                 <div>
@@ -85,9 +88,41 @@ const ContactPage = () => {
                     <li>• Malaria prophylaxis recommended</li>
                     <li>• Travel insurance advised</li>
                     <li>• 24/7 medical support available</li>
+                    <li>• Yellow fever vaccination required</li>
+                    <li>• Keep valuables in room safe</li>
                   </ul>
                 </div>
               </div>
+              
+              <div className="border-t border-border pt-6">
+                <h4 className="font-semibold text-foreground mb-3">Transportation Options</h4>
+                <div className="grid md:grid-cols-2 gap-4 text-muted-foreground">
+                  <div>
+                    <p className="font-medium text-foreground mb-2">From Nairobi</p>
+                    <ul className="space-y-1 text-sm">
+                      <li>• Daily flights: 1.5 hours</li>
+                      <li>• Road via A1 Highway: ~12 hours</li>
+                      <li>• Charter flights available</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="font-medium text-foreground mb-2">Local Transport</p>
+                    <ul className="space-y-1 text-sm">
+                      <li>• Hotel airport shuttle (free)</li>
+                      <li>• Car rental services available</li>
+                      <li>• Guided tour transportation included</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <a href="#contact">
+                <Button variant="luxury" size="lg" className="text-lg px-10 py-6">
+                  Make a Reservation
+                </Button>
+              </a>
             </div>
           </div>
         </section>
