@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/luxora-logo.jpg";
+import { Link, useLocation } from "react-router-dom";
+import logo from "@/assets/luxora-logo.png";
 
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,13 +17,7 @@ export const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
-    }
-  };
+  const isActive = (path: string) => location.pathname === path;
 
   return (
     <header
@@ -31,42 +27,53 @@ export const Header = () => {
     >
       <nav className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
-          <img 
-            src={logo} 
-            alt="Luxora Hotel Lodwar" 
-            className="h-12 md:h-16 w-auto object-contain cursor-pointer" 
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          />
+          <Link to="/">
+            <img 
+              src={logo} 
+              alt="Luxora Hotel Lodwar" 
+              className="h-12 md:h-16 w-auto object-contain cursor-pointer" 
+            />
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-foreground hover:text-accent transition-colors font-medium"
+            <Link
+              to="/"
+              className={`transition-colors font-medium ${
+                isActive("/") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              className={`transition-colors font-medium ${
+                isActive("/about") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
             >
               About
-            </button>
-            <button
-              onClick={() => scrollToSection("rooms")}
-              className="text-foreground hover:text-accent transition-colors font-medium"
+            </Link>
+            <Link
+              to="/rooms"
+              className={`transition-colors font-medium ${
+                isActive("/rooms") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
             >
               Rooms
-            </button>
-            <button
-              onClick={() => scrollToSection("amenities")}
-              className="text-foreground hover:text-accent transition-colors font-medium"
+            </Link>
+            <Link
+              to="/experiences"
+              className={`transition-colors font-medium ${
+                isActive("/experiences") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
             >
-              Amenities
-            </button>
-            <button
-              onClick={() => scrollToSection("location")}
-              className="text-foreground hover:text-accent transition-colors font-medium"
-            >
-              Location
-            </button>
-            <Button variant="gold" onClick={() => scrollToSection("contact")}>
-              Book Now
-            </Button>
+              Experiences
+            </Link>
+            <Link to="/contact">
+              <Button variant="gold">
+                Contact
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -81,33 +88,47 @@ export const Header = () => {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 flex flex-col gap-4 bg-card rounded-lg p-4">
-            <button
-              onClick={() => scrollToSection("about")}
-              className="text-foreground hover:text-accent transition-colors font-medium text-left"
+            <Link
+              to="/"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`transition-colors font-medium text-left ${
+                isActive("/") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
+            >
+              Home
+            </Link>
+            <Link
+              to="/about"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`transition-colors font-medium text-left ${
+                isActive("/about") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
             >
               About
-            </button>
-            <button
-              onClick={() => scrollToSection("rooms")}
-              className="text-foreground hover:text-accent transition-colors font-medium text-left"
+            </Link>
+            <Link
+              to="/rooms"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`transition-colors font-medium text-left ${
+                isActive("/rooms") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
             >
               Rooms
-            </button>
-            <button
-              onClick={() => scrollToSection("amenities")}
-              className="text-foreground hover:text-accent transition-colors font-medium text-left"
+            </Link>
+            <Link
+              to="/experiences"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`transition-colors font-medium text-left ${
+                isActive("/experiences") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
             >
-              Amenities
-            </button>
-            <button
-              onClick={() => scrollToSection("location")}
-              className="text-foreground hover:text-accent transition-colors font-medium text-left"
-            >
-              Location
-            </button>
-            <Button variant="gold" onClick={() => scrollToSection("contact")} className="w-full">
-              Book Now
-            </Button>
+              Experiences
+            </Link>
+            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+              <Button variant="gold" className="w-full">
+                Contact
+              </Button>
+            </Link>
           </div>
         )}
       </nav>
