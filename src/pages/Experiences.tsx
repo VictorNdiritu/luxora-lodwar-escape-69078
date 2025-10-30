@@ -62,7 +62,7 @@ const Experiences = () => {
       <Helmet>
         <title>Experiences & Activities | LUXORA Hotel Lodwar</title>
         <meta name="description" content="Discover Lake Turkana, Eliye Springs, cultural villages, and more. Explore the unique landscapes and rich heritage of Turkana County from LUXORA Hotel Lodwar." />
-        <link rel="canonical" href="https://luxorahotellodwar.com/experiences" />
+        <link rel="canonical" href="https://luxorahotels.co.ke/experiences" />
         <meta property="og:title" content="Experiences & Activities | LUXORA Hotel Lodwar" />
         <meta property="og:description" content="Explore unforgettable adventures and cultural experiences in Northern Kenya." />
         <meta property="og:type" content="website" />

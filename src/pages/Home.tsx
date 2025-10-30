@@ -14,7 +14,7 @@ const Home = () => {
       <Helmet>
         <title>LUXORA Hotel Lodwar | Boutique Luxury Hotel Adjacent to Lodwar Airport</title>
         <meta name="description" content="Experience luxury at LUXORA Hotel Lodwar - A boutique hotel with 36 elegant rooms adjacent to Lodwar Airport. Featuring Standard, Superior, and Twin accommodations with modern amenities." />
-        <link rel="canonical" href="https://luxorahotellodwar.com/" />
+        <link rel="canonical" href="https://luxorahotels.co.ke/" />
         <meta property="og:title" content="LUXORA Hotel Lodwar | Boutique Luxury Hotel" />
         <meta property="og:description" content="Experience luxury at LUXORA Hotel Lodwar - Adjacent to Lodwar Airport in Northern Kenya." />
         <meta property="og:type" content="website" />

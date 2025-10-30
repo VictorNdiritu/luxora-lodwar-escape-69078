@@ -11,7 +11,7 @@ const ContactPage = () => {
       <Helmet>
         <title>Contact Us | LUXORA Hotel Lodwar - Reservations & Inquiries</title>
         <meta name="description" content="Contact LUXORA Hotel Lodwar for reservations and inquiries. Located adjacent to Lodwar Airport. Phone: +254 123 456 789 | Email: info@luxorahotel.com" />
-        <link rel="canonical" href="https://luxorahotellodwar.com/contact" />
+        <link rel="canonical" href="https://luxorahotels.co.ke/contact" />
         <meta property="og:title" content="Contact LUXORA Hotel Lodwar" />
         <meta property="og:type" content="website" />
       </Helmet>

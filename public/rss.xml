@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>LUXORA Hotel Lodwar Blog</title>
-    <link>https://luxorahotellodwar.com/blog</link>
+    <link>https://luxorahotels.co.ke/blog</link>
     <description>Discover travel tips, local insights, and adventure stories from Northern Kenya's premier boutique hotel</description>
     <language>en-us</language>
     <lastBuildDate>Wed, 30 Oct 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://luxorahotellodwar.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://luxorahotels.co.ke/rss.xml" rel="self" type="application/rss+xml"/>
     
     <item>
       <title>The Ultimate Turkana Road Trip: An Adventurer's Guide to Kenya's Wild North</title>
-      <link>https://luxorahotellodwar.com/blog/turkana-road-trip-guide</link>
+      <link>https://luxorahotels.co.ke/blog/turkana-road-trip-guide</link>
       <description>There is something magnetic about Kenya's far north - the endless horizons, raw desert beauty, and the feeling that you have left the world behind.</description>
       <pubDate>Wed, 30 Oct 2025 00:00:00 +0000</pubDate>
-      <guid>https://luxorahotellodwar.com/blog/turkana-road-trip-guide</guid>
+      <guid>https://luxorahotels.co.ke/blog/turkana-road-trip-guide</guid>
     </item>
   </channel>
 </rss>

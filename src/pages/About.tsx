@@ -12,7 +12,7 @@ const AboutPage = () => {
       <Helmet>
         <title>About LUXORA Hotel Lodwar | Our Story & Vision</title>
         <meta name="description" content="Discover LUXORA Hotel Lodwar's story - A boutique hotel offering 36 elegant rooms across 2 floors, adjacent to Lodwar Airport in Northern Kenya." />
-        <link rel="canonical" href="https://luxorahotellodwar.com/about" />
+        <link rel="canonical" href="https://luxorahotels.co.ke/about" />
         <meta property="og:title" content="About LUXORA Hotel Lodwar" />
         <meta property="og:description" content="Learn about our commitment to excellence and authentic Kenyan hospitality." />
         <meta property="og:type" content="website" />

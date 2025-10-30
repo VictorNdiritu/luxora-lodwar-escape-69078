@@ -12,7 +12,7 @@ const RoomsPage = () => {
       <Helmet>
         <title>Rooms & Accommodation | LUXORA Hotel Lodwar</title>
         <meta name="description" content="Explore our Standard Double, Superior Double, and Standard Twin rooms. Each room features air conditioning, en-suite bathroom, free WiFi, and modern amenities." />
-        <link rel="canonical" href="https://luxorahotellodwar.com/rooms" />
+        <link rel="canonical" href="https://luxorahotels.co.ke/rooms" />
         <meta property="og:title" content="Rooms & Accommodation | LUXORA Hotel Lodwar" />
         <meta property="og:description" content="Discover our elegant rooms with modern amenities and exceptional comfort." />
         <meta property="og:type" content="website" />

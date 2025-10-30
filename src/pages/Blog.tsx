@@ -22,7 +22,7 @@ const Blog = () => {
       <Helmet>
         <title>Blog | LUXORA Hotel Lodwar - Travel Tips & Local Insights</title>
         <meta name="description" content="Discover travel tips, adventure stories, and insider insights about Northern Kenya and the Turkana region from LUXORA Hotel Lodwar." />
-        <link rel="canonical" href="https://luxorahotellodwar.com/blog" />
+        <link rel="canonical" href="https://luxorahotels.co.ke/blog" />
         <meta property="og:title" content="Blog | LUXORA Hotel Lodwar" />
         <meta property="og:description" content="Travel tips and adventure stories from Northern Kenya" />
         <meta property="og:type" content="website" />
