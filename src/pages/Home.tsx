@@ -53,7 +53,7 @@ const Home = () => {
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-2">36 Rooms</h3>
               <p className="text-muted-foreground">
-                Deluxe and Superior accommodations
+                Standard and Superior accommodations
               </p>
             </div>
 
@@ -86,15 +86,15 @@ const Home = () => {
               Our Accommodation
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Choose from our carefully designed Deluxe and Superior rooms, each offering modern amenities and exceptional comfort for your stay.
+              Choose from our carefully designed Standard and Superior rooms, each offering modern amenities and exceptional comfort for your stay.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-8">
             <div className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-              <img src={deluxeImage} alt="Deluxe Double Room" className="w-full h-64 object-cover" />
+              <img src={deluxeImage} alt="Standard Double Room" className="w-full h-64 object-cover" />
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">Deluxe Double Room</h3>
+                <h3 className="text-2xl font-bold text-foreground mb-2">Standard Double Room</h3>
                 <p className="text-muted-foreground mb-4">
                   Spacious rooms with queen-size beds, modern furnishings, and stunning views. Perfect for couples or guests seeking extra comfort.
                 </p>
