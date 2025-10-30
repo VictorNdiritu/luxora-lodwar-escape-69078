@@ -3,10 +3,20 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Plane, Clock, MapPin, Info } from "lucide-react";
+import { Helmet } from "react-helmet";
 
 const ContactPage = () => {
   return (
-    <div className="min-h-screen">
+    <>
+      <Helmet>
+        <title>Contact Us | LUXORA Hotel Lodwar - Reservations & Inquiries</title>
+        <meta name="description" content="Contact LUXORA Hotel Lodwar for reservations and inquiries. Located adjacent to Lodwar Airport. Phone: +254 123 456 789 | Email: info@luxorahotel.com" />
+        <link rel="canonical" href="https://luxorahotellodwar.com/contact" />
+        <meta property="og:title" content="Contact LUXORA Hotel Lodwar" />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
+      <div className="min-h-screen">
       <Header />
       <div className="pt-24">
         {/* Travel Info Section */}
@@ -132,6 +142,7 @@ const ContactPage = () => {
       </div>
       <Footer />
     </div>
+    </>
   );
 };
 

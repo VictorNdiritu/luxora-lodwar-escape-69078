@@ -36,7 +36,7 @@ export const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-8 flex-1 justify-center">
             <Link
               to="/"
               className={`transition-colors font-medium ${
@@ -69,6 +69,18 @@ export const Header = () => {
             >
               Experiences
             </Link>
+            <Link
+              to="/blog"
+              className={`transition-colors font-medium ${
+                isActive("/blog") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
+            >
+              Blog
+            </Link>
+          </div>
+
+          {/* Contact Button - Positioned on the right */}
+          <div className="hidden md:block">
             <Link to="/contact">
               <Button variant="gold">
                 Contact
@@ -123,6 +135,15 @@ export const Header = () => {
               }`}
             >
               Experiences
+            </Link>
+            <Link
+              to="/blog"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`transition-colors font-medium text-left ${
+                isActive("/blog") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
+            >
+              Blog
             </Link>
             <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="gold" className="w-full">

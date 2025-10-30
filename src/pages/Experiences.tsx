@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { MapPin, Palmtree, Camera, Mountain, Utensils, Users } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Helmet } from "react-helmet";
 
 const Experiences = () => {
   const experiences = [
@@ -57,7 +58,17 @@ const Experiences = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <>
+      <Helmet>
+        <title>Experiences & Activities | LUXORA Hotel Lodwar</title>
+        <meta name="description" content="Discover Lake Turkana, Eliye Springs, cultural villages, and more. Explore the unique landscapes and rich heritage of Turkana County from LUXORA Hotel Lodwar." />
+        <link rel="canonical" href="https://luxorahotellodwar.com/experiences" />
+        <meta property="og:title" content="Experiences & Activities | LUXORA Hotel Lodwar" />
+        <meta property="og:description" content="Explore unforgettable adventures and cultural experiences in Northern Kenya." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
+      <div className="min-h-screen">
       <Header />
       <div className="pt-24">
         {/* Hero Section */}
@@ -213,6 +224,7 @@ const Experiences = () => {
       </div>
       <Footer />
     </div>
+    </>
   );
 };
 

@@ -4,10 +4,21 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Check, Shield, Clock, Sparkles } from "lucide-react";
+import { Helmet } from "react-helmet";
 
 const RoomsPage = () => {
   return (
-    <div className="min-h-screen">
+    <>
+      <Helmet>
+        <title>Rooms & Accommodation | LUXORA Hotel Lodwar</title>
+        <meta name="description" content="Explore our Standard Double, Superior Double, and Standard Twin rooms. Each room features air conditioning, en-suite bathroom, free WiFi, and modern amenities." />
+        <link rel="canonical" href="https://luxorahotellodwar.com/rooms" />
+        <meta property="og:title" content="Rooms & Accommodation | LUXORA Hotel Lodwar" />
+        <meta property="og:description" content="Discover our elegant rooms with modern amenities and exceptional comfort." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
+      <div className="min-h-screen">
       <Header />
       <div className="pt-24">
         {/* Hero Section */}
@@ -149,6 +160,7 @@ const RoomsPage = () => {
       </div>
       <Footer />
     </div>
+    </>
   );
 };
 

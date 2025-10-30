@@ -4,12 +4,23 @@ import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Building2, Bed, MapPin, Utensils, Wifi, Car, Users, Mountain, Palmtree, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 import deluxeImage from "@/assets/deluxe-double.jpg";
 import superiorImage from "@/assets/superior-single.jpg";
 
 const Home = () => {
   return (
-    <div className="min-h-screen">
+    <>
+      <Helmet>
+        <title>LUXORA Hotel Lodwar | Boutique Luxury Hotel Adjacent to Lodwar Airport</title>
+        <meta name="description" content="Experience luxury at LUXORA Hotel Lodwar - A boutique hotel with 36 elegant rooms adjacent to Lodwar Airport. Featuring Standard, Superior, and Twin accommodations with modern amenities." />
+        <link rel="canonical" href="https://luxorahotellodwar.com/" />
+        <meta property="og:title" content="LUXORA Hotel Lodwar | Boutique Luxury Hotel" />
+        <meta property="og:description" content="Experience luxury at LUXORA Hotel Lodwar - Adjacent to Lodwar Airport in Northern Kenya." />
+        <meta property="og:type" content="website" />
+      </Helmet>
+
+      <div className="min-h-screen">
       <Header />
       <Hero />
       
@@ -250,6 +261,7 @@ const Home = () => {
 
       <Footer />
     </div>
+    </>
   );
 };
 

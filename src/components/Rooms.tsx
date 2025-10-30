@@ -1,18 +1,33 @@
 import { Button } from "@/components/ui/button";
-import { Users, User, Wifi, Tv, Coffee, Wind } from "lucide-react";
+import { Users, Wifi, Tv, Coffee, Wind } from "lucide-react";
 import deluxeDouble from "@/assets/deluxe-double.jpg";
 import superiorSingle from "@/assets/superior-single.jpg";
 
 const roomCategories = [
   {
-    title: "Deluxe Double Room",
+    title: "Standard Double Room",
     image: deluxeDouble,
     guests: "2 Guests",
     icon: Users,
-    count: "18 Rooms Available",
+    count: "12 Rooms Available",
     features: [
-      "King Size Bed",
-      "Premium Bedding",
+      "Double Bed",
+      "Air Conditioning",
+      "En-suite Bathroom",
+      "Work Desk",
+      "Premium Toiletries",
+    ],
+    amenities: [Wifi, Tv, Coffee, Wind],
+  },
+  {
+    title: "Superior Double Room",
+    image: superiorSingle,
+    guests: "2 Guests",
+    icon: Users,
+    count: "12 Rooms Available",
+    features: [
+      "King-size Bed",
+      "Air Conditioning",
       "Luxury Bathroom",
       "Work Desk",
       "City View",
@@ -20,17 +35,17 @@ const roomCategories = [
     amenities: [Wifi, Tv, Coffee, Wind],
   },
   {
-    title: "Superior Single Room",
-    image: superiorSingle,
-    guests: "1 Guest",
-    icon: User,
-    count: "18 Rooms Available",
+    title: "Standard Twin Room",
+    image: deluxeDouble,
+    guests: "2 Guests",
+    icon: Users,
+    count: "12 Rooms Available",
     features: [
-      "Comfortable Single Bed",
-      "Modern Furnishings",
+      "Two Single Beds",
+      "Air Conditioning",
       "En-suite Bathroom",
-      "Reading Area",
-      "Natural Light",
+      "Work Desk",
+      "Premium Toiletries",
     ],
     amenities: [Wifi, Tv, Coffee, Wind],
   },
@@ -52,7 +67,7 @@ export const Rooms = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {roomCategories.map((room, index) => (
             <div
               key={index}
