@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Footer } from "@/components/Footer";
+import { MICE } from "@/components/MICE";
 import { Button } from "@/components/ui/button";
 import { Building2, Bed, MapPin, Utensils, Wifi, Car, Users, Mountain, Palmtree, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -241,6 +242,9 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+      {/* MICE Section */}
+      <MICE />
 
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-b from-accent/10 to-background">
