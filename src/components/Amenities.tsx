@@ -1,5 +1,5 @@
 import { Utensils, Wifi, Car, Coffee, Shield } from "lucide-react";
-import amenitiesImage from "@/assets/amenities.jpg";
+import restaurantImage from "@/assets/new-images/restaurant.png"; // updated image
 
 const amenitiesListColumn1 = [
   {
@@ -92,8 +92,8 @@ export const Amenities = () => {
             {/* Right side image */}
             <div className="relative rounded-lg overflow-hidden shadow-[var(--shadow-luxury)]">
               <img
-                src={amenitiesImage}
-                alt="Hotel Amenities"
+                src={restaurantImage}
+                alt="Hotel Restaurant"
                 className="w-full h-full object-cover"
               />
             </div>
