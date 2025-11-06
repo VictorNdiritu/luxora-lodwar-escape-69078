@@ -45,7 +45,7 @@ const ContactPage = () => {
                   </div>
                   <h3 className="text-xl font-bold text-foreground mb-2">Airport Access</h3>
                   <p className="text-muted-foreground">
-                    2 minutes walk from Lodwar Airport. Free airport shuttle available 24/7.
+                    10 minute walk from Lodwar Airport. Free airport shuttle available 24/7.
                   </p>
                 </div>
 
