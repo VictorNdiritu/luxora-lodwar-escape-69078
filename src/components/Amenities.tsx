@@ -1,11 +1,21 @@
 import { Utensils, Wifi, Car, Coffee, Shield } from "lucide-react";
-import restaurantImage from "@/assets/new-images/restaurant.png"; // updated image
+import restaurantImage from "@/assets/new-images/restaurant.png"; // new image
 
-const amenitiesListColumn1 = [
+const amenitiesList = [
   {
     icon: Utensils,
     title: "Restaurant & Bar",
     description: "Fine dining experience with local and international cuisine",
+  },
+  {
+    icon: Wifi,
+    title: "High-Speed WiFi",
+    description: "Complimentary high-speed internet throughout the property",
+  },
+  {
+    icon: Car,
+    title: "Airport Transfer",
+    description: "Convenient shuttle service to and from Lodwar Airport",
   },
   {
     icon: Coffee,
@@ -16,19 +26,6 @@ const amenitiesListColumn1 = [
     icon: Shield,
     title: "Security",
     description: "24-hour security and CCTV surveillance for your safety",
-  },
-];
-
-const amenitiesListColumn2 = [
-  {
-    icon: Car,
-    title: "Airport Transfer",
-    description: "Convenient shuttle service to and from Lodwar Airport",
-  },
-  {
-    icon: Wifi,
-    title: "High-Speed WiFi",
-    description: "Complimentary high-speed internet throughout the property",
   },
 ];
 
@@ -46,10 +43,10 @@ export const Amenities = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
-          {/* Left Column */}
+          {/* Left Column - Amenities */}
           <div className="order-2 lg:order-1">
-            <div className="grid sm:grid-cols-1 gap-6">
-              {amenitiesListColumn1.map((amenity, index) => (
+            <div className="grid sm:grid-cols-2 gap-6">
+              {amenitiesList.map((amenity, index) => (
                 <div
                   key={index}
                   className="bg-card p-6 rounded-lg shadow-md hover:shadow-[var(--shadow-gold)] transition-all duration-300"
@@ -68,32 +65,12 @@ export const Amenities = () => {
             </div>
           </div>
 
-          {/* Right Column */}
+          {/* Right Column - Image */}
           <div className="order-1 lg:order-2">
-            <div className="grid sm:grid-cols-1 gap-6 mb-6">
-              {amenitiesListColumn2.map((amenity, index) => (
-                <div
-                  key={index}
-                  className="bg-card p-6 rounded-lg shadow-md hover:shadow-[var(--shadow-gold)] transition-all duration-300"
-                >
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent mb-4">
-                    <amenity.icon className="w-6 h-6 text-accent-foreground" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">
-                    {amenity.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    {amenity.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Right side image */}
             <div className="relative rounded-lg overflow-hidden shadow-[var(--shadow-luxury)]">
               <img
                 src={restaurantImage}
-                alt="Hotel Restaurant"
+                alt="Hotel Amenities"
                 className="w-full h-full object-cover"
               />
             </div>
