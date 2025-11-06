@@ -150,7 +150,7 @@ const RoomsPage = () => {
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Reserve your room today and experience the finest accommodation in Lodwar. Our team is ready to welcome you.
             </p>
-            <Link to="/contact">
+            <Link to="/reservations">
               <Button variant="luxury" size="lg" className="text-lg px-10 py-6">
                 Reserve Now
               </Button>

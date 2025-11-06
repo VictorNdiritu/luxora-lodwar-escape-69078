@@ -1,15 +1,36 @@
 import { Button } from "@/components/ui/button";
 import { Users, Wifi, Tv, Coffee, Wind } from "lucide-react";
-import deluxeDouble from "@/assets/deluxe-double.jpg";
-import superiorSingle from "@/assets/superior-single.jpg";
+import { Link } from "react-router-dom";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+// Standard Double Room images
+import standardDouble1 from "@/assets/new-images/sd.png";
+import standardDouble2 from "@/assets/new-images/sdr.png";
+import standardDouble3 from "@/assets/new-images/superior d.png";
+
+// Superior Double Room images
+import superiorDouble1 from "@/assets/new-images/sup.png";
+import superiorDouble2 from "@/assets/new-images/sup Double.png";
+import superiorDouble3 from "@/assets/new-images/Superior Double .png";
+
+// Twin Room images
+import twinRoom1 from "@/assets/new-images/suit.png";
+import twinRoom2 from "@/assets/new-images/suite.png";
+import twinRoom3 from "@/assets/new-images/suitee.png";
 
 const roomCategories = [
   {
     title: "Standard Double Room",
-    image: deluxeDouble,
+    images: [standardDouble1, standardDouble2, standardDouble3],
     guests: "2 Guests",
     icon: Users,
-    count: "12 Rooms Available",
+    count: "14 Rooms Available",
     features: [
       "Double Bed",
       "Air Conditioning",
@@ -21,10 +42,10 @@ const roomCategories = [
   },
   {
     title: "Superior Double Room",
-    image: superiorSingle,
+    images: [superiorDouble1, superiorDouble2, superiorDouble3],
     guests: "2 Guests",
     icon: Users,
-    count: "12 Rooms Available",
+    count: "14 Rooms Available",
     features: [
       "King-size Bed",
       "Air Conditioning",
@@ -36,10 +57,10 @@ const roomCategories = [
   },
   {
     title: "Standard Twin Room",
-    image: deluxeDouble,
+    images: [twinRoom1, twinRoom2, twinRoom3],
     guests: "2 Guests",
     icon: Users,
-    count: "12 Rooms Available",
+    count: "8 Rooms Available",
     features: [
       "Two Single Beds",
       "Air Conditioning",
@@ -51,10 +72,7 @@ const roomCategories = [
   },
 ];
 
-import { Link } from "react-router-dom";
-
 export const Rooms = () => {
-
   return (
     <section id="rooms" className="py-20 bg-background">
       <div className="container mx-auto px-4">
@@ -74,11 +92,21 @@ export const Rooms = () => {
               className="bg-card rounded-lg overflow-hidden shadow-[var(--shadow-luxury)] hover:shadow-[var(--shadow-gold)] transition-all duration-300"
             >
               <div className="relative h-64 overflow-hidden">
-                <img
-                  src={room.image}
-                  alt={room.title}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
-                />
+                <Carousel className="w-full h-full">
+                  <CarouselContent>
+                    {room.images.map((image, imgIndex) => (
+                      <CarouselItem key={imgIndex}>
+                        <img
+                          src={image}
+                          alt={`${room.title} - View ${imgIndex + 1}`}
+                          className="w-full h-64 object-cover"
+                        />
+                      </CarouselItem>
+                    ))}
+                  </CarouselContent>
+                  <CarouselPrevious className="left-2" />
+                  <CarouselNext className="right-2" />
+                </Carousel>
                 <div className="absolute top-4 right-4 bg-accent text-accent-foreground px-4 py-2 rounded-full font-semibold">
                   {room.count}
                 </div>
@@ -119,7 +147,7 @@ export const Rooms = () => {
                   ))}
                 </div>
 
-                <Link to="/contact" className="block">
+                <Link to="/reservations" className="block">
                   <Button variant="luxury" className="w-full">
                     Reserve Now
                   </Button>
