@@ -62,6 +62,14 @@ export const Header = () => {
               Rooms
             </Link>
             <Link
+              to="/mice"
+              className={`transition-colors font-medium ${
+                isActive("/mice") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
+            >
+              Events
+            </Link>
+            <Link
               to="/experiences"
               className={`transition-colors font-medium ${
                 isActive("/experiences") ? "text-accent" : "text-foreground hover:text-accent"
@@ -77,13 +85,21 @@ export const Header = () => {
             >
               Blog
             </Link>
+            <Link
+              to="/contact"
+              className={`transition-colors font-medium ${
+                isActive("/contact") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
+            >
+              Contact
+            </Link>
           </div>
 
-          {/* Contact Button - Positioned on the right */}
+          {/* Reserve Button - Positioned on the right */}
           <div className="hidden md:block">
-            <Link to="/contact">
+            <Link to="/reservations">
               <Button variant="gold">
-                Contact
+                Reserve
               </Button>
             </Link>
           </div>
@@ -128,6 +144,15 @@ export const Header = () => {
               Rooms
             </Link>
             <Link
+              to="/mice"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`transition-colors font-medium text-left ${
+                isActive("/mice") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
+            >
+              Events
+            </Link>
+            <Link
               to="/experiences"
               onClick={() => setIsMobileMenuOpen(false)}
               className={`transition-colors font-medium text-left ${
@@ -145,9 +170,18 @@ export const Header = () => {
             >
               Blog
             </Link>
-            <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>
+            <Link
+              to="/contact"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className={`transition-colors font-medium text-left ${
+                isActive("/contact") ? "text-accent" : "text-foreground hover:text-accent"
+              }`}
+            >
+              Contact
+            </Link>
+            <Link to="/reservations" onClick={() => setIsMobileMenuOpen(false)}>
               <Button variant="gold" className="w-full">
-                Contact
+                Reserve
               </Button>
             </Link>
           </div>

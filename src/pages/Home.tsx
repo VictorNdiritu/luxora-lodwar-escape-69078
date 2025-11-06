@@ -2,8 +2,9 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Footer } from "@/components/Footer";
 import { MICE } from "@/components/MICE";
+import { Excursions } from "@/components/Excursions";
 import { Button } from "@/components/ui/button";
-import { Building2, Bed, MapPin, Utensils, Wifi, Car, Users, Mountain, Palmtree, Mail } from "lucide-react";
+import { Building2, Bed, MapPin, Utensils, Wifi, Car, Users, Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import deluxeImage from "@/assets/deluxe-double.jpg";
@@ -54,7 +55,7 @@ const Home = () => {
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-2">36 Rooms</h3>
               <p className="text-muted-foreground">
-                Standard and Superior accommodations
+                14 Standard Double, 14 Superior Double & 8 Twin
               </p>
             </div>
 
@@ -64,7 +65,7 @@ const Home = () => {
               </div>
               <h3 className="text-2xl font-bold text-foreground mb-2">Prime Location</h3>
               <p className="text-muted-foreground">
-                Adjacent to Lodwar Airport
+                Just 10 minutes from Lodwar Airport
               </p>
             </div>
           </div>
@@ -127,7 +128,7 @@ const Home = () => {
                 View All Rooms
               </Button>
             </Link>
-            <Link to="/contact">
+            <Link to="/reservations">
               <Button variant="luxury" size="lg">
                 Reserve Now
               </Button>
@@ -189,59 +190,8 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Experiences Preview */}
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Discover Lodwar
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore the unique culture, stunning landscapes, and unforgettable adventures that await you in Turkana County
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
-            <div className="text-center p-6 rounded-lg bg-card hover:shadow-lg transition-all duration-300">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/20 mb-4">
-                <Palmtree className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Lake Turkana</h3>
-              <p className="text-muted-foreground">
-                Visit the world's largest desert lake, a UNESCO World Heritage Site
-              </p>
-            </div>
-
-            <div className="text-center p-6 rounded-lg bg-card hover:shadow-lg transition-all duration-300">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/20 mb-4">
-                <Users className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Cultural Tours</h3>
-              <p className="text-muted-foreground">
-                Immerse yourself in the rich heritage of the Turkana people
-              </p>
-            </div>
-
-            <div className="text-center p-6 rounded-lg bg-card hover:shadow-lg transition-all duration-300">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/20 mb-4">
-                <Mountain className="w-8 h-8 text-accent" />
-              </div>
-              <h3 className="text-xl font-bold text-foreground mb-2">Adventure Activities</h3>
-              <p className="text-muted-foreground">
-                Desert safaris, camel rides, and archaeological site visits
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <Link to="/experiences">
-              <Button variant="outline" size="lg">
-                Explore All Experiences
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Excursions Section */}
+      <Excursions />
 
       {/* MICE Section */}
       <MICE />
@@ -255,7 +205,7 @@ const Home = () => {
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
             Book your stay today and discover why LUXORA is Lodwar's premier boutique hotel destination
           </p>
-          <Link to="/contact">
+          <Link to="/reservations">
             <Button variant="luxury" size="lg" className="text-lg px-10 py-6">
               Reserve Your Stay
             </Button>

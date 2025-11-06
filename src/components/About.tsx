@@ -30,7 +30,7 @@ export const About = () => {
             </div>
             <h3 className="text-2xl font-bold text-foreground mb-2">36 Rooms</h3>
             <p className="text-muted-foreground">
-              18 Double & 18 Single rooms in Deluxe and Superior categories
+              14 Standard Double, 14 Superior Double & 8 Twin rooms
             </p>
           </div>
 
@@ -40,7 +40,7 @@ export const About = () => {
             </div>
             <h3 className="text-2xl font-bold text-foreground mb-2">Prime Location</h3>
             <p className="text-muted-foreground">
-              Adjacent to Lodwar Airport for ultimate convenience
+              Just 10 minutes from Lodwar Airport
             </p>
           </div>
         </div>

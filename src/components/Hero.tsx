@@ -1,30 +1,22 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import heroImage from "@/assets/hero-hotel.jpg";
+import logo from "@/assets/luxora-logo-main.png";
 
 export const Hero = () => {
-
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-        }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
-      </div>
-
+    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-muted/50 to-background">
       <div className="relative z-10 container mx-auto px-4 text-center">
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 animate-fade-in">
-          Welcome to LUXORA
-        </h1>
-        <p className="text-xl md:text-2xl text-primary-foreground/90 mb-4 max-w-3xl mx-auto">
+        <img 
+          src={logo} 
+          alt="LUXORA Hotels & Resorts" 
+          className="w-full max-w-md md:max-w-2xl mx-auto mb-8 animate-fade-in"
+        />
+        <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto">
           A Boutique Hotel Experience in Lodwar
         </p>
-        <p className="text-lg md:text-xl text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-          Experience luxury and comfort adjacent to Lodwar Airport
+        <p className="text-lg md:text-xl text-muted-foreground/80 mb-8 max-w-2xl mx-auto">
+          Experience luxury and comfort just 10 minutes from Lodwar Airport
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Link to="/rooms">
@@ -37,18 +29,17 @@ export const Hero = () => {
               <ArrowRight className="ml-2" />
             </Button>
           </Link>
-          <Link to="/contact">
+          <Link to="/reservations">
             <Button 
-              variant="outline" 
+              variant="luxury" 
               size="lg"
-              className="text-base md:text-lg px-8 py-6 bg-card/20 backdrop-blur-sm border-primary-foreground/30 text-primary-foreground hover:bg-card/30"
+              className="text-base md:text-lg px-8 py-6"
             >
               Reserve Now
             </Button>
           </Link>
         </div>
       </div>
-
     </section>
   );
 };
