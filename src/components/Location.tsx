@@ -32,7 +32,7 @@ export const Location = () => {
                 <Clock className="w-8 h-8 text-accent-foreground" />
               </div>
               <h3 className="text-xl font-bold text-foreground mb-2">
-                2 Minutes
+                10 Minutes
               </h3>
               <p className="text-muted-foreground">
                 Quick walk to the terminal
