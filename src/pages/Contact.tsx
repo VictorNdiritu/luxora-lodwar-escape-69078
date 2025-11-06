@@ -85,7 +85,7 @@ const ContactPage = () => {
               </div>
 
               <div className="max-w-4xl mx-auto bg-card p-8 rounded-lg shadow-lg mb-12">
-                <h3 className="text-2xl font-bold text-foreground mb-6">
+                <h3 className="text-2xl font-bold text-foreground mb-6 text-center">
                   Important Travel Tips
                 </h3>
                 <div className="grid md:grid-cols-2 gap-6 mb-8">
