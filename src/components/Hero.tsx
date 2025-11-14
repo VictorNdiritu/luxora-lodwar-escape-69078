@@ -5,7 +5,7 @@ import logo from "@/assets/luxora-logo-main.png";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-24 md:pt-28" style={{ backgroundColor: '#fbfcfb' }}>
+    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-24 md:pt-28" style={{ backgroundColor: '#fbfcfb' }}>
       <div className="relative z-10 container mx-auto px-4 text-center">
         <img 
           src={logo} 
