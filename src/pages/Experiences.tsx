@@ -5,6 +5,12 @@ import { Link } from "react-router-dom";
 import { MapPin, Palmtree, Camera, Mountain, Utensils, Users } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Helmet } from "react-helmet";
+import turkanaVillageImg from "@/assets/experiences/Turkana Cultural Village.jpg";
+import centralIslandImg from "@/assets/experiences/Central Turkana Desert Excursions.jpg";
+import eliyeSpringsImg from "@/assets/experiences/Eliye spirings.jpg";
+import lodwarTownImg from "@/assets/experiences/Lodwar Town & Market.jpg";
+import namorotungaImg from "@/assets/experiences/Namorutunga (Standing Stones):.jpg";
+import wadachPyramidsImg from "@/assets/experiences/Wadach Pyramids.jpeg";
 
 const Experiences = () => {
   const experiences = [
@@ -13,36 +19,42 @@ const Experiences = () => {
       title: "Turkana Cultural Village",
       description: "Immerse yourself in the rich cultural heritage of the Turkana people. Experience traditional dances, crafts, and local customs.",
       duration: "Half Day",
+      image: turkanaVillageImg,
     },
     {
       icon: Mountain,
       title: "Central Island National Park",
       description: "Explore volcanic islands in Lake Turkana, home to the world's largest concentration of Nile crocodiles.",
       duration: "Full Day",
+      image: centralIslandImg,
     },
     {
-      icon: Palmtree,
-      title: "Lake Turkana Excursion",
-      description: "Visit the world's largest desert lake, a UNESCO World Heritage Site known as the 'Jade Sea'.",
-      duration: "Full Day",
+      icon: Mountain,
+      title: "Namorutunga Standing Stones",
+      description: "Visit ancient megalithic sites with mysterious standing stones dating back thousands of years.",
+      duration: "Half Day",
+      image: namorotungaImg,
     },
     {
       icon: Camera,
       title: "Eliye Springs",
       description: "Relax at this beautiful oasis with white sandy beaches and crystal-clear waters perfect for swimming.",
       duration: "Full Day",
+      image: eliyeSpringsImg,
     },
     {
       icon: Users,
-      title: "Lodwar Town Tour",
+      title: "Lodwar Town & Market",
       description: "Discover local markets, meet artisans, and explore the vibrant town center with guided cultural insights.",
       duration: "Half Day",
+      image: lodwarTownImg,
     },
     {
-      icon: Utensils,
-      title: "Traditional Cuisine Experience",
-      description: "Savor authentic Turkana cuisine and learn about traditional cooking methods from local chefs.",
-      duration: "2-3 Hours",
+      icon: Mountain,
+      title: "Wadach Pyramids",
+      description: "Explore unique pyramid-shaped rock formations in the Turkana desert landscape.",
+      duration: "Half Day",
+      image: wadachPyramidsImg,
     },
   ];
 
@@ -95,7 +107,14 @@ const Experiences = () => {
               {experiences.map((experience, index) => {
                 const Icon = experience.icon;
                 return (
-                  <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
+                    <div className="relative h-48 w-full overflow-hidden">
+                      <img 
+                        src={experience.image} 
+                        alt={experience.title}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
                     <CardHeader>
                       <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/20 mb-4">
                         <Icon className="w-6 h-6 text-accent" />
