@@ -126,7 +126,7 @@ const Reservations = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           required
-                          placeholder="+254110463062"
+                          placeholder="+254 110 463 062"
                         />
                       </div>
 
@@ -251,7 +251,7 @@ const Reservations = () => {
               {/* Contact Information */}
               <div className="mt-8 text-center">
                 <p className="text-muted-foreground mb-2">Need help with your reservation?</p>
-                <p className="text-foreground font-semibold">Call us: +254110463062</p>
+                <p className="text-foreground font-semibold">Call us: +254 110 463 062</p>
                 <p className="text-muted-foreground">Email: info@luxorahotels.co.ke</p>
               </div>
             </div>
