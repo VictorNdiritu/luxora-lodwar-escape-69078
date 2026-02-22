@@ -14,9 +14,150 @@ import {
   Car,
   Users,
   Mail,
+  Sparkles,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+
+// ✨ Opening Soon Banner Component
+const OpeningSoonBanner = () => {
+  const [visible, setVisible] = useState(true);
+
+  if (!visible) return null;
+
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        background: "linear-gradient(90deg, #1a0a00 0%, #3d1f00 30%, #c8860a 50%, #3d1f00 70%, #1a0a00 100%)",
+        overflow: "hidden",
+        padding: "0",
+        zIndex: 50,
+      }}
+    >
+      {/* Shimmer overlay */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "linear-gradient(120deg, transparent 0%, rgba(255,215,100,0.18) 40%, rgba(255,215,100,0.38) 50%, rgba(255,215,100,0.18) 60%, transparent 100%)",
+          animation: "shimmer 3s infinite linear",
+          backgroundSize: "200% 100%",
+        }}
+      />
+
+      {/* Top decorative line */}
+      <div
+        style={{
+          height: "2px",
+          background: "linear-gradient(90deg, transparent, #e8b84b, #fff8e1, #e8b84b, transparent)",
+        }}
+      />
+
+      {/* Content */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "16px",
+          padding: "14px 24px",
+          position: "relative",
+        }}
+      >
+        {/* Left ornament */}
+        <span style={{ color: "#e8b84b", fontSize: "18px", letterSpacing: "4px", opacity: 0.8 }}>
+          ✦ ✦ ✦
+        </span>
+
+        {/* Main text */}
+        <div style={{ textAlign: "center" }}>
+          <span
+            style={{
+              fontFamily: "'Playfair Display', 'Georgia', serif",
+              fontSize: "clamp(13px, 2.5vw, 17px)",
+              fontWeight: "600",
+              color: "#fff8e1",
+              letterSpacing: "0.25em",
+              textTransform: "uppercase",
+              textShadow: "0 0 20px rgba(232,184,75,0.6), 0 1px 2px rgba(0,0,0,0.5)",
+            }}
+          >
+            Opening Soon
+          </span>
+          <span
+            style={{
+              display: "inline-block",
+              marginLeft: "14px",
+              fontFamily: "'Playfair Display', 'Georgia', serif",
+              fontSize: "clamp(11px, 1.8vw, 13px)",
+              color: "#e8b84b",
+              fontStyle: "italic",
+              letterSpacing: "0.12em",
+              opacity: 0.9,
+            }}
+          >
+            — Lodwar's Finest Boutique Hotel
+          </span>
+        </div>
+
+        {/* Right ornament */}
+        <span style={{ color: "#e8b84b", fontSize: "18px", letterSpacing: "4px", opacity: 0.8 }}>
+          ✦ ✦ ✦
+        </span>
+
+        {/* Close button */}
+        <button
+          onClick={() => setVisible(false)}
+          aria-label="Dismiss banner"
+          style={{
+            position: "absolute",
+            right: "16px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            background: "none",
+            border: "1px solid rgba(232,184,75,0.35)",
+            borderRadius: "50%",
+            color: "#e8b84b",
+            width: "26px",
+            height: "26px",
+            cursor: "pointer",
+            fontSize: "14px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            opacity: 0.7,
+            transition: "opacity 0.2s",
+            lineHeight: 1,
+          }}
+          onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
+          onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+        >
+          ×
+        </button>
+      </div>
+
+      {/* Bottom decorative line */}
+      <div
+        style={{
+          height: "2px",
+          background: "linear-gradient(90deg, transparent, #e8b84b, #fff8e1, #e8b84b, transparent)",
+        }}
+      />
+
+      {/* Keyframe injection */}
+      <style>{`
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
+      `}</style>
+    </div>
+  );
+};
 
 const Home = () => {
   // ✅ Image Arrays (using raw GitHub URLs)
@@ -85,6 +226,10 @@ const Home = () => {
 
       <div className="min-h-screen bg-[#fbfcfb]">
         <Header />
+
+        {/* ✨ Opening Soon Banner — sits just below the header */}
+        <OpeningSoonBanner />
+
         <Hero />
 
         {/* About Preview */}
