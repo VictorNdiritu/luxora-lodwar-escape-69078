@@ -1,0 +1,16 @@
+# Luxora Boutique Hotel
+
+> A boutique hotel experience in Lodwar, Kenya — just 10 minutes from Lodwar Airport.
+
+Luxora is a boutique hotel offering comfortable rooms, dining, meetings & events, and curated excursions in the Turkana region.
+
+## Pages
+
+- [Home](/): Overview of the hotel, rooms, and experiences
+- [About](/about): Our story, values, and what makes Luxora unique
+- [Rooms](/rooms): Accommodation options including twin and other room types
+- [Experiences](/experiences): Featured excursions and activities around Lodwar
+- [Meetings & Events](/mice): MICE facilities for conferences and events
+- [Blog](/blog): Stories, travel tips, and updates from Luxora
+- [Contact](/contact): Get in touch with our team
+- [Reservations](/reservations): Book your stay at Luxora
