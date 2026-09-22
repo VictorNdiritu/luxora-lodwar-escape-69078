@@ -24,7 +24,7 @@ const Reservations = () => {
     specialRequests: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
     const { error } = await supabase.from("reservation_requests").insert({
@@ -37,9 +37,26 @@ const Reservations = () => {
       guests: Number(formData.guests),
       special_requests: formData.specialRequests || null,
     });
+
+    // Also deliver the reservation request by email via Formspree
+    const formspree = await fetch("https://formspree.io/f/xbgloazd", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        _subject: "New reservation request — Luxora Hotel, Lodwar",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        check_in: formData.checkIn,
+        check_out: formData.checkOut,
+        room_type: formData.roomType,
+        guests: formData.guests,
+        special_requests: formData.specialRequests,
+      }),
+    });
     setSubmitting(false);
 
-    if (error) {
+    if (error && !formspree.ok) {
       toast({
         title: "Reservation not sent",
         description: "Something went wrong. Please call us on +254 110 463 062.",
