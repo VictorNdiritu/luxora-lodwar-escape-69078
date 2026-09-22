@@ -266,8 +266,8 @@ const Reservations = () => {
                     </ul>
                   </div>
 
-                  <Button type="submit" variant="luxury" className="w-full" size="lg">
-                    Submit Reservation Request
+                  <Button type="submit" variant="luxury" className="w-full" size="lg" disabled={submitting}>
+                    {submitting ? "Submitting..." : "Submit Reservation Request"}
                   </Button>
                 </form>
               </div>
