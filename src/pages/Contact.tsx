@@ -9,13 +9,13 @@ const ContactPage = () => {
   return (
     <>
       <Helmet>
-        <title>Contact Us | LUXORA Hotel Lodwar - Reservations & Inquiries</title>
+        <title>Contact Us | Luxora Hotel, Lodwar - Reservations & Inquiries</title>
         <meta
           name="description"
-          content="Contact LUXORA Hotel Lodwar for reservations and inquiries. Located adjacent to Lodwar Airport. Phone: +254 123 456 789 | Email: info@luxorahotel.com"
+          content="Contact Luxora Hotel, Lodwar for reservations and inquiries. Located adjacent to Lodwar Airport. Phone: +254 123 456 789 | Email: info@luxorahotel.com"
         />
         <link rel="canonical" href="https://luxorahotels.co.ke/contact" />
-        <meta property="og:title" content="Contact LUXORA Hotel Lodwar" />
+        <meta property="og:title" content="Contact Luxora Hotel, Lodwar" />
         <meta property="og:type" content="website" />
       </Helmet>
 
@@ -34,7 +34,7 @@ const ContactPage = () => {
                   Travel Information
                 </h1>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Everything you need to know for your visit to LUXORA Hotel Lodwar
+                  Everything you need to know for your visit to Luxora Hotel, Lodwar
                 </p>
               </div>
 

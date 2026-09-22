@@ -24,7 +24,7 @@ const BlogPost = () => {
   return (
     <>
       <Helmet>
-        <title>{post.title} | LUXORA Hotel Lodwar Blog</title>
+        <title>{post.title} | Luxora Hotel, Lodwar Blog</title>
         <meta name="description" content="Discover the ultimate guide to planning your Turkana road trip adventure, including routes, accommodation at Luxora Hotel, and must-see destinations." />
         <link rel="canonical" href={`https://luxorahotels.co.ke/blog/${post.id}`} />
         <meta property="og:title" content={post.title} />

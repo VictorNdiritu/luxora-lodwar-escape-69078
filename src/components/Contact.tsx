@@ -25,9 +25,22 @@ export const Contact = () => {
       phone: formData.phone,
       message: formData.message,
     });
+
+    // Also deliver the enquiry by email via Formspree
+    const formspree = await fetch("https://formspree.io/f/xbgloazd", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        _subject: "New website enquiry — Luxora Hotel, Lodwar",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+      }),
+    });
     setSubmitting(false);
 
-    if (error) {
+    if (error && !formspree.ok) {
       toast({
         title: "Message not sent",
         description: "Something went wrong. Please call us on +254 110 463 062.",

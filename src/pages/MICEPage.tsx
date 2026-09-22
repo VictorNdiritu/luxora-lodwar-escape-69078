@@ -67,10 +67,10 @@ const MICEPage = () => {
   return (
     <>
       <Helmet>
-        <title>MICE - Meetings, Conferences & Events | LUXORA Hotel Lodwar</title>
-        <meta name="description" content="Host your corporate meetings, conferences, and events at LUXORA Hotel Lodwar. Elegant venues, high-speed connectivity, gourmet catering, and professional event coordination in Northern Kenya." />
+        <title>MICE - Meetings, Conferences & Events | Luxora Hotel, Lodwar</title>
+        <meta name="description" content="Host your corporate meetings, conferences, and events at Luxora Hotel, Lodwar. Elegant venues, high-speed connectivity, gourmet catering, and professional event coordination in Northern Kenya." />
         <link rel="canonical" href="https://luxorahotels.co.ke/mice" />
-        <meta property="og:title" content="MICE - Corporate Events & Conferences | LUXORA Hotel Lodwar" />
+        <meta property="og:title" content="MICE - Corporate Events & Conferences | Luxora Hotel, Lodwar" />
         <meta property="og:description" content="Premier MICE destination in Lodwar with elegant meeting spaces, modern facilities, and dedicated event support." />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -86,7 +86,7 @@ const MICEPage = () => {
                 Meetings, Incentives, Conferences & Events
               </span>
               <h1 className="text-4xl md:text-6xl font-bold text-foreground mt-4 mb-6">
-                Host Your Event at LUXORA
+                Host Your Event at Luxora
               </h1>
               <p className="text-xl text-muted-foreground mb-8">
                 Where professionalism meets unparalleled comfort. Your premier destination for corporate retreats, strategic team-building experiences, and impactful business gatherings in Northern Kenya.
@@ -181,7 +181,7 @@ const MICEPage = () => {
               Ready to Plan Your Next Event?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Our dedicated events team is ready to help you create a memorable and successful gathering at LUXORA
+              Our dedicated events team is ready to help you create a memorable and successful gathering at Luxora
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/reservations">

@@ -24,7 +24,7 @@ const Reservations = () => {
     specialRequests: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
     const { error } = await supabase.from("reservation_requests").insert({
@@ -37,9 +37,26 @@ const Reservations = () => {
       guests: Number(formData.guests),
       special_requests: formData.specialRequests || null,
     });
+
+    // Also deliver the reservation request by email via Formspree
+    const formspree = await fetch("https://formspree.io/f/xbgloazd", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        _subject: "New reservation request — Luxora Hotel, Lodwar",
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        check_in: formData.checkIn,
+        check_out: formData.checkOut,
+        room_type: formData.roomType,
+        guests: formData.guests,
+        special_requests: formData.specialRequests,
+      }),
+    });
     setSubmitting(false);
 
-    if (error) {
+    if (error && !formspree.ok) {
       toast({
         title: "Reservation not sent",
         description: "Something went wrong. Please call us on +254 110 463 062.",
@@ -81,11 +98,11 @@ const Reservations = () => {
   return (
     <>
       <Helmet>
-        <title>Reservations | LUXORA Hotel Lodwar</title>
-        <meta name="description" content="Reserve your stay at LUXORA Hotel Lodwar. Book Standard Double, Superior Double, or Twin rooms. Easy online reservation with flexible check-in and check-out options." />
+        <title>Reservations | Luxora Hotel, Lodwar</title>
+        <meta name="description" content="Reserve your stay at Luxora Hotel, Lodwar. Book Standard Double, Superior Double, or Twin rooms. Easy online reservation with flexible check-in and check-out options." />
         <link rel="canonical" href="https://luxorahotels.co.ke/reservations" />
-        <meta property="og:title" content="Make a Reservation | LUXORA Hotel Lodwar" />
-        <meta property="og:description" content="Book your room at LUXORA Hotel Lodwar - Premier boutique hotel in Northern Kenya." />
+        <meta property="og:title" content="Make a Reservation | Luxora Hotel, Lodwar" />
+        <meta property="og:description" content="Book your room at Luxora Hotel, Lodwar - Premier boutique hotel in Northern Kenya." />
         <meta property="og:type" content="website" />
       </Helmet>
 
@@ -100,7 +117,7 @@ const Reservations = () => {
                   Make a Reservation
                 </h1>
                 <p className="text-lg text-muted-foreground">
-                  Book your stay at LUXORA and experience unparalleled luxury in Lodwar
+                  Book your stay at Luxora and experience unparalleled luxury in Lodwar
                 </p>
               </div>
 

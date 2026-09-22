@@ -20,10 +20,10 @@ const Blog = () => {
   return (
     <>
       <Helmet>
-        <title>Blog | LUXORA Hotel Lodwar - Travel Tips & Local Insights</title>
-        <meta name="description" content="Discover travel tips, adventure stories, and insider insights about Northern Kenya and the Turkana region from LUXORA Hotel Lodwar." />
+        <title>Blog | Luxora Hotel, Lodwar - Travel Tips & Local Insights</title>
+        <meta name="description" content="Discover travel tips, adventure stories, and insider insights about Northern Kenya and the Turkana region from Luxora Hotel, Lodwar." />
         <link rel="canonical" href="https://luxorahotels.co.ke/blog" />
-        <meta property="og:title" content="Blog | LUXORA Hotel Lodwar" />
+        <meta property="og:title" content="Blog | Luxora Hotel, Lodwar" />
         <meta property="og:description" content="Travel tips and adventure stories from Northern Kenya" />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -36,7 +36,7 @@ const Blog = () => {
           <section className="pt-32 pb-16 bg-gradient-to-b from-primary/5 to-background">
             <div className="container mx-auto px-4">
               <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                LUXORA Travel Blog
+                Luxora Travel Blog
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
                 Adventure stories, travel tips, and insider insights from Northern Kenya's premier destination
@@ -91,7 +91,7 @@ const Blog = () => {
                 Ready for Your Turkana Adventure?
               </h2>
               <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Let LUXORA be your gateway to Kenya's wild north
+                Let Luxora be your gateway to Kenya's wild north
               </p>
               <Link to="/contact">
                 <Button variant="gold" size="lg">

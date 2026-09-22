@@ -72,10 +72,10 @@ const Experiences = () => {
   return (
     <>
       <Helmet>
-        <title>Experiences & Activities | LUXORA Hotel Lodwar</title>
-        <meta name="description" content="Discover Lake Turkana, Eliye Springs, cultural villages, and more. Explore the unique landscapes and rich heritage of Turkana County from LUXORA Hotel Lodwar." />
+        <title>Experiences & Activities | Luxora Hotel, Lodwar</title>
+        <meta name="description" content="Discover Lake Turkana, Eliye Springs, cultural villages, and more. Explore the unique landscapes and rich heritage of Turkana County from Luxora Hotel, Lodwar." />
         <link rel="canonical" href="https://luxorahotels.co.ke/experiences" />
-        <meta property="og:title" content="Experiences & Activities | LUXORA Hotel Lodwar" />
+        <meta property="og:title" content="Experiences & Activities | Luxora Hotel, Lodwar" />
         <meta property="og:description" content="Explore unforgettable adventures and cultural experiences in Northern Kenya." />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -231,7 +231,7 @@ const Experiences = () => {
               Ready to Explore?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Book your stay at LUXORA and let our concierge team help arrange unforgettable experiences in Turkana County. Contact us today to start planning your adventure.
+              Book your stay at Luxora and let our concierge team help arrange unforgettable experiences in Turkana County. Contact us today to start planning your adventure.
             </p>
             <Link to="/contact">
               <Button variant="luxury" size="lg" className="text-lg px-10 py-6">

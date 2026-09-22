@@ -13,7 +13,7 @@ export const MICE = () => {
             <div className="relative rounded-lg overflow-hidden shadow-2xl">
               <img 
                 src={miceImage} 
-                alt="LUXORA Conference and Meeting Facilities" 
+                alt="Luxora Conference and Meeting Facilities" 
                 className="w-full h-[500px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
@@ -27,10 +27,10 @@ export const MICE = () => {
                 Corporate Excellence
               </span>
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mt-2 mb-4">
-                MICE at LUXORA
+                MICE at Luxora
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Host your Meetings, Incentives, Conferences, and Events in an environment where professionalism meets unparalleled comfort. LUXORA Hotel Lodwar is your premier destination for corporate retreats, strategic team-building experiences, and impactful business gatherings in Northern Kenya.
+                Host your Meetings, Incentives, Conferences, and Events in an environment where professionalism meets unparalleled comfort. Luxora Hotel, Lodwar is your premier destination for corporate retreats, strategic team-building experiences, and impactful business gatherings in Northern Kenya.
               </p>
             </div>
 
