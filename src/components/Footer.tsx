@@ -20,8 +20,19 @@ export const Footer = () => {
             <p className="text-primary-foreground/80 mb-2">
               © {new Date().getFullYear()} Luxora Hotel, Lodwar. All rights reserved.
             </p>
-            <p className="text-primary-foreground/60 text-sm">
+            <p className="text-primary-foreground/60 text-sm mb-2">
               Adjacent to Lodwar Airport, Turkana County, Kenya
+            </p>
+            <p className="text-primary-foreground/50 text-xs">
+              Managed by{" "}
+              <a
+                href="https://creekoxley.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline underline-offset-2 hover:text-primary-foreground/80 transition-colors"
+              >
+                Creek Oxley
+              </a>
             </p>
           </div>
         </div>
