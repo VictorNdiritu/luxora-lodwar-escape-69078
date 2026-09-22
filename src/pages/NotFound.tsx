@@ -15,8 +15,8 @@ const NotFound = () => {
   return (
     <>
       <Helmet>
-        <title>Page Not Found | LUXORA Hotel Lodwar</title>
-        <meta name="description" content="The page you're looking for cannot be found. Return to LUXORA Hotel Lodwar homepage." />
+        <title>Page Not Found | Luxora Hotel, Lodwar</title>
+        <meta name="description" content="The page you're looking for cannot be found. Return to Luxora Hotel, Lodwar homepage." />
         <meta name="robots" content="noindex, follow" />
       </Helmet>
 

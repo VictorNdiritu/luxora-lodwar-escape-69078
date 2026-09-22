@@ -206,20 +206,20 @@ const Home = () => {
     <>
       <Helmet>
         <title>
-          LUXORA Hotel Lodwar | Boutique Luxury Hotel Adjacent to Lodwar Airport
+          Luxora Hotel, Lodwar | Boutique Luxury Hotel Adjacent to Lodwar Airport
         </title>
         <meta
           name="description"
-          content="Experience luxury at LUXORA Hotel Lodwar - A boutique hotel with 36 elegant rooms adjacent to Lodwar Airport. Featuring Standard, Superior, and Twin accommodations with modern amenities."
+          content="Experience luxury at Luxora Hotel, Lodwar - A boutique hotel with 36 elegant rooms adjacent to Lodwar Airport. Featuring Standard, Superior, and Twin accommodations with modern amenities."
         />
         <link rel="canonical" href="https://luxorahotels.co.ke/" />
         <meta
           property="og:title"
-          content="LUXORA Hotel Lodwar | Boutique Luxury Hotel"
+          content="Luxora Hotel, Lodwar | Boutique Luxury Hotel"
         />
         <meta
           property="og:description"
-          content="Experience luxury at LUXORA Hotel Lodwar - Adjacent to Lodwar Airport in Northern Kenya."
+          content="Experience luxury at Luxora Hotel, Lodwar - Adjacent to Lodwar Airport in Northern Kenya."
         />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -237,7 +237,7 @@ const Home = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Welcome to LUXORA
+                Welcome to Luxora
               </h2>
               <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
                 Your premier boutique hotel in Lodwar, offering unmatched luxury
@@ -492,10 +492,10 @@ const Home = () => {
         <section className="py-20 bg-gradient-to-b from-accent/10 to-background">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Ready to Experience LUXORA?
+              Ready to Experience Luxora?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Book your stay today and discover why LUXORA is Lodwar's premier
+              Book your stay today and discover why Luxora is Lodwar's premier
               boutique hotel destination.
             </p>
             <Link to="/reservations">

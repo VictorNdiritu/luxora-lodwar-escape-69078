@@ -6,7 +6,7 @@ export const About = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Discover LUXORA
+            Discover Luxora
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Where luxury meets convenience in the heart of Lodwar
@@ -47,7 +47,7 @@ export const About = () => {
 
         <div className="mt-16 max-w-4xl mx-auto text-center">
           <p className="text-lg text-muted-foreground leading-relaxed">
-            LUXORA Hotel Lodwar offers an exceptional boutique hotel experience, combining 
+            Luxora Hotel, Lodwar offers an exceptional boutique hotel experience, combining 
             modern amenities with warm hospitality. Our strategically located property provides 
             easy access to Lodwar Airport, making us the perfect choice for both business and 
             leisure travelers seeking comfort and sophistication.

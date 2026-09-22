@@ -18,7 +18,7 @@ export const Footer = () => {
 
           <div className="text-center md:text-right">
             <p className="text-primary-foreground/80 mb-2">
-              © {new Date().getFullYear()} LUXORA Hotel Lodwar. All rights reserved.
+              © {new Date().getFullYear()} Luxora Hotel, Lodwar. All rights reserved.
             </p>
             <p className="text-primary-foreground/60 text-sm">
               Adjacent to Lodwar Airport, Turkana County, Kenya

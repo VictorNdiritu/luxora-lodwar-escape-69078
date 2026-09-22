@@ -9,7 +9,7 @@ export const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 text-center">
         <img 
           src={logo} 
-          alt="LUXORA Hotels & Resorts" 
+          alt="Luxora Hotels & Resorts" 
           className="w-full max-w-md md:max-w-2xl mx-auto mb-8 animate-fade-in"
         />
         <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-3xl mx-auto">

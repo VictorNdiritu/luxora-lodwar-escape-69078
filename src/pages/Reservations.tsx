@@ -81,11 +81,11 @@ const Reservations = () => {
   return (
     <>
       <Helmet>
-        <title>Reservations | LUXORA Hotel Lodwar</title>
-        <meta name="description" content="Reserve your stay at LUXORA Hotel Lodwar. Book Standard Double, Superior Double, or Twin rooms. Easy online reservation with flexible check-in and check-out options." />
+        <title>Reservations | Luxora Hotel, Lodwar</title>
+        <meta name="description" content="Reserve your stay at Luxora Hotel, Lodwar. Book Standard Double, Superior Double, or Twin rooms. Easy online reservation with flexible check-in and check-out options." />
         <link rel="canonical" href="https://luxorahotels.co.ke/reservations" />
-        <meta property="og:title" content="Make a Reservation | LUXORA Hotel Lodwar" />
-        <meta property="og:description" content="Book your room at LUXORA Hotel Lodwar - Premier boutique hotel in Northern Kenya." />
+        <meta property="og:title" content="Make a Reservation | Luxora Hotel, Lodwar" />
+        <meta property="og:description" content="Book your room at Luxora Hotel, Lodwar - Premier boutique hotel in Northern Kenya." />
         <meta property="og:type" content="website" />
       </Helmet>
 
@@ -100,7 +100,7 @@ const Reservations = () => {
                   Make a Reservation
                 </h1>
                 <p className="text-lg text-muted-foreground">
-                  Book your stay at LUXORA and experience unparalleled luxury in Lodwar
+                  Book your stay at Luxora and experience unparalleled luxury in Lodwar
                 </p>
               </div>
 

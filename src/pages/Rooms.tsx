@@ -10,10 +10,10 @@ const RoomsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Rooms & Accommodation | LUXORA Hotel Lodwar</title>
+        <title>Rooms & Accommodation | Luxora Hotel, Lodwar</title>
         <meta name="description" content="Explore our Standard Double, Superior Double, and Standard Twin rooms. Each room features air conditioning, en-suite bathroom, free WiFi, and modern amenities." />
         <link rel="canonical" href="https://luxorahotels.co.ke/rooms" />
-        <meta property="og:title" content="Rooms & Accommodation | LUXORA Hotel Lodwar" />
+        <meta property="og:title" content="Rooms & Accommodation | Luxora Hotel, Lodwar" />
         <meta property="og:description" content="Discover our elegant rooms with modern amenities and exceptional comfort." />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -25,10 +25,10 @@ const RoomsPage = () => {
         <section className="py-16 bg-gradient-to-b from-accent/20 to-background">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-              Accommodation at LUXORA
+              Accommodation at Luxora
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Choose from our thoughtfully designed rooms, each offering modern amenities, premium comfort, and the warm hospitality that defines the LUXORA experience. Whether traveling for business or leisure, we have the perfect space for your stay.
+              Choose from our thoughtfully designed rooms, each offering modern amenities, premium comfort, and the warm hospitality that defines the Luxora experience. Whether traveling for business or leisure, we have the perfect space for your stay.
             </p>
           </div>
         </section>

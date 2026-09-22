@@ -59,7 +59,7 @@ export const Location = () => {
             <div className="space-y-3 text-center">
               <p className="text-muted-foreground flex items-center justify-center gap-2">
                 <MapPin className="w-5 h-5 text-accent" />
-                LUXORA Hotel Lodwar, Adjacent to Lodwar Airport
+                Luxora Hotel, Lodwar, Adjacent to Lodwar Airport
               </p>
               <p className="text-muted-foreground">
                 Lodwar, Turkana County, Kenya

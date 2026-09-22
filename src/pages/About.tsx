@@ -10,10 +10,10 @@ const AboutPage = () => {
   return (
     <>
       <Helmet>
-        <title>About LUXORA Hotel Lodwar | Our Story & Vision</title>
-        <meta name="description" content="Discover LUXORA Hotel Lodwar's story - A boutique hotel offering 36 elegant rooms across 2 floors, adjacent to Lodwar Airport in Northern Kenya." />
+        <title>About Luxora Hotel, Lodwar | Our Story & Vision</title>
+        <meta name="description" content="Discover Luxora Hotel, Lodwar's story - A boutique hotel offering 36 elegant rooms across 2 floors, adjacent to Lodwar Airport in Northern Kenya." />
         <link rel="canonical" href="https://luxorahotels.co.ke/about" />
-        <meta property="og:title" content="About LUXORA Hotel Lodwar" />
+        <meta property="og:title" content="About Luxora Hotel, Lodwar" />
         <meta property="og:description" content="Learn about our commitment to excellence and authentic Kenyan hospitality." />
         <meta property="og:type" content="website" />
       </Helmet>
@@ -32,10 +32,10 @@ const AboutPage = () => {
               </h2>
               <div className="space-y-6 text-lg text-muted-foreground">
                 <p>
-                  LUXORA Hotel Lodwar was founded with a vision to bring world-class hospitality to the heart of Turkana County. Our boutique hotel represents a perfect blend of modern luxury and authentic Kenyan hospitality, designed to cater to both business and leisure travelers visiting this unique region.
+                  Luxora Hotel, Lodwar was founded with a vision to bring world-class hospitality to the heart of Turkana County. Our boutique hotel represents a perfect blend of modern luxury and authentic Kenyan hospitality, designed to cater to both business and leisure travelers visiting this unique region.
                 </p>
                 <p>
-                  Strategically located adjacent to Lodwar Airport, LUXORA offers unparalleled convenience for travelers arriving by air. Our proximity to the airport, combined with our commitment to excellence, makes us the preferred choice for visitors to Lodwar and the greater Turkana region.
+                  Strategically located adjacent to Lodwar Airport, Luxora offers unparalleled convenience for travelers arriving by air. Our proximity to the airport, combined with our commitment to excellence, makes us the preferred choice for visitors to Lodwar and the greater Turkana region.
                 </p>
                 <p>
                   With 36 thoughtfully designed rooms spread across two floors, we offer an intimate yet comprehensive hotel experience. Each room is equipped with modern amenities while maintaining a warm, inviting atmosphere that reflects the spirit of Turkana hospitality.
