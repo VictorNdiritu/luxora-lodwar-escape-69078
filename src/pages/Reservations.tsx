@@ -8,9 +8,11 @@ import { Calendar, Users, Bed } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Helmet } from "react-helmet";
+import { supabase } from "@/integrations/supabase/client";
 
 const Reservations = () => {
   const { toast } = useToast();
+  const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,8 +24,30 @@ const Reservations = () => {
     specialRequests: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+    const { error } = await supabase.from("reservation_requests").insert({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      check_in: formData.checkIn,
+      check_out: formData.checkOut,
+      room_type: formData.roomType,
+      guests: Number(formData.guests),
+      special_requests: formData.specialRequests || null,
+    });
+    setSubmitting(false);
+
+    if (error) {
+      toast({
+        title: "Reservation not sent",
+        description: "Something went wrong. Please call us on +254 110 463 062.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     toast({
       title: "Reservation Request Received!",
       description: "We'll contact you within 24 hours to confirm your reservation.",

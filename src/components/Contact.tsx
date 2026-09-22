@@ -4,9 +4,11 @@ import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Contact = () => {
   const { toast } = useToast();
+  const [submitting, setSubmitting] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -14,10 +16,28 @@ export const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+    const { error } = await supabase.from("contact_submissions").insert({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+    });
+    setSubmitting(false);
+
+    if (error) {
+      toast({
+        title: "Message not sent",
+        description: "Something went wrong. Please call us on +254 110 463 062.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     toast({
-      title: "Booking Request Received!",
+      title: "Message Received!",
       description: "We'll contact you shortly to confirm your reservation.",
     });
     setFormData({ name: "", email: "", phone: "", message: "" });
@@ -159,8 +179,8 @@ export const Contact = () => {
                 />
               </div>
 
-              <Button type="submit" variant="luxury" className="w-full">
-                Send Message
+              <Button type="submit" variant="luxury" className="w-full" disabled={submitting}>
+                {submitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
           </div>
