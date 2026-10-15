@@ -3,25 +3,15 @@ import { Link, useParams } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ScrollReveal } from "@/hooks/useScrollReveal";
-import heroImg from "@/assets/experiences/Central Turkana Desert Excursions.jpg";
-import eliyeImg from "@/assets/experiences/Eliye spirings.jpg";
-import townImg from "@/assets/experiences/Lodwar Town & Market.jpg";
-import { Calendar, Clock, ArrowLeft, Share2, Compass, MapPin } from "lucide-react";
+import { BLOG_POSTS, BlogPostData } from "./blogData";
+import { Calendar, Clock, ArrowLeft, Compass, CheckCircle2 } from "lucide-react";
 
 const BlogPost = () => {
   const { slug } = useParams();
 
-  const post = {
-    id: "turkana-road-trip-guide",
-    title: "The Ultimate Turkana Road Trip: An Adventurer's Guide to Kenya's Wild North",
-    date: "October 30, 2025",
-    readTime: "8 min read",
-    author: "Luxora Concierge Desk",
-    image: heroImg,
-  };
+  const post: BlogPostData | undefined = BLOG_POSTS.find((p) => p.id === slug);
 
-  // If slug doesn't match, show friendly redirect back to journal
-  if (slug !== post.id) {
+  if (!post) {
     return (
       <div className="min-h-screen bg-[hsl(var(--background))] flex flex-col justify-between">
         <Header />
@@ -29,7 +19,7 @@ const BlogPost = () => {
           <p className="text-eyebrow text-[hsl(var(--accent))] mb-4">Article Not Found</p>
           <h1 className="text-headline mb-6">Story Archive</h1>
           <Link to="/blog" className="btn-primary">
-            <span>Back to Journal</span>
+            <span>Back to The Journal</span>
           </Link>
         </div>
         <Footer />
@@ -41,14 +31,11 @@ const BlogPost = () => {
     <>
       <Helmet>
         <title>{post.title} | Luxora Hotel Journal</title>
-        <meta
-          name="description"
-          content="The comprehensive guide to planning your Turkana adventure: overland 4x4 routes via Kitale, scheduled flights to Lodwar, luxury accommodation at Luxora Hotel, and iconic desert destinations."
-        />
+        <meta name="description" content={post.excerpt} />
         <link rel="canonical" href={`https://luxorahotels.co.ke/blog/${post.id}`} />
         <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
         <meta property="og:type" content="article" />
-        <meta property="article:published_time" content="2025-10-30" />
       </Helmet>
 
       <ScrollReveal />
@@ -56,7 +43,7 @@ const BlogPost = () => {
         <Header />
 
         {/* Back Link & Header Bar */}
-        <section className="pt-32 pb-8 bg-[hsl(var(--card))] border-b border-[hsl(var(--border))]">
+        <section className="pt-32 pb-6 bg-[hsl(var(--card))] border-b border-[hsl(var(--border))]">
           <div className="container mx-auto px-6 max-w-4xl">
             <Link
               to="/blog"
@@ -73,7 +60,7 @@ const BlogPost = () => {
         <header className="py-16 bg-[hsl(var(--card))]">
           <div className="container mx-auto px-6 max-w-4xl text-center reveal">
             <p className="text-eyebrow text-[hsl(var(--accent))] mb-4" style={{ letterSpacing: "0.25em" }}>
-              Expedition Guide • Northern Kenya
+              {post.category} • Northern Kenya
             </p>
             <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl font-light leading-tight mb-8">
               {post.title}
@@ -98,133 +85,172 @@ const BlogPost = () => {
           </div>
         </header>
 
-        {/* Hero image banner */}
+        {/* Hero Image Banner */}
         <div className="container mx-auto px-6 max-w-5xl -mt-6 mb-16 reveal">
           <div className="relative aspect-[21/9] overflow-hidden border border-[hsl(var(--border))] shadow-md">
             <img src={post.image} alt={post.title} className="img-cover" />
           </div>
           <p className="text-right text-[0.65rem] text-[hsl(var(--muted-foreground))] mt-2 font-light">
-            Central Turkana desert terrain — Photographed along the Lodwar corridor.
+            {post.imageCaption}
           </p>
         </div>
 
         {/* Article Content */}
         <main className="container mx-auto px-6 max-w-3xl pb-24">
           <article className="prose-luxury reveal">
-            {/* Lead paragraph */}
-            <p className="text-lead text-[hsl(var(--foreground))] font-light leading-relaxed mb-8 drop-cap">
-              There is something magnetic about Kenya's far north — the endless horizons, raw desert beauty, and the feeling that you have left the world behind. Turkana is not just a destination; it is an expedition that rewires your sense of place and scale. Whether arriving with a roaring 4x4 or landing comfortably in Lodwar by air, this is the journey of a lifetime.
-            </p>
 
-            {/* Section 1 */}
-            <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-14 mb-4">
-              Getting There: The Great Northern Journey
-            </h2>
-            <span className="gold-rule" />
+            {/* ── ARTICLE 1: TURKANA PACKING & TRAVEL GUIDE ──────────────── */}
+            {post.id === "turkana-packing-travel-guide" && (
+              <>
+                <p className="text-lead text-[hsl(var(--foreground))] font-light leading-relaxed mb-8">
+                  Turkana is one of Kenya's most distinctive travel destinations. From the blue-green waters of Lake Turkana to its volcanic landscapes, ancient archaeological sites and rich cultural heritage, the region offers experiences that are quite different from the country's more familiar safari and beach destinations.
+                </p>
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-8">
+                  Travelling to Turkana requires thoughtful preparation. The distances between attractions can be considerable, temperatures can be high, and services become less accessible as you venture away from major towns. Knowing what to pack, what to expect, and how to plan your movements makes all the difference.
+                </p>
 
-            <h3 className="font-serif text-xl font-normal text-[hsl(var(--foreground))] mt-8 mb-3">
-              By Road: The Classic Overland Expedition
-            </h3>
-            <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
-              The road to Turkana is legendary among travelers who crave the untamed. From Nairobi, the route heads north via Kitale and Kapenguria before descending into the dramatic Great Rift floor toward Lodwar. The drive typically spans 12 to 14 hours depending on transit pace and exploration stops.
-            </p>
-            <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-6">
-              A sturdy, high-clearance 4x4 is essential. While smooth tarmac now covers substantial stretches, the final approaches and off-highway excursions present rugged, desert conditions. Carry ample hydration, a comprehensive first-aid kit, and dual spare tires. Past Kitale, fuel stations become infrequent, so top up at every opportunity. The region is welcoming and serene, but self-reliance is the hallmark of great overland journeys.
-            </p>
+                <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-12 mb-4">
+                  1. Understand Where You Are Going
+                </h2>
+                <span className="gold-rule" />
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
+                  Before packing, establish which parts of Turkana you intend to visit. Turkana County is vast, and the experience varies depending on your destination:
+                </p>
+                <ul className="space-y-3 mb-8 text-[hsl(var(--muted-foreground))] font-light leading-relaxed">
+                  <li><strong className="text-[hsl(var(--foreground))]">Lodwar:</strong> The county headquarters and premier base for arranging accommodation, supplies, transport and excursions.</li>
+                  <li><strong className="text-[hsl(var(--foreground))]">Eliye Springs:</strong> Sandy shores and scenic views along the western side of Lake Turkana, ideal for relaxing by the water.</li>
+                  <li><strong className="text-[hsl(var(--foreground))]">Kalokol:</strong> A fishing town on the western shore where visitors can learn about the lake's fishing economy and arrange boat trips.</li>
+                  <li><strong className="text-[hsl(var(--foreground))]">Central Island National Park:</strong> Volcanic terrain, three distinct crater lakes, birdlife and important crocodile breeding habitats.</li>
+                  <li><strong className="text-[hsl(var(--foreground))]">Sibiloi National Park:</strong> World-renowned for its archaeological significance, prehistoric fossils, and remote wilderness.</li>
+                </ul>
 
-            <h3 className="font-serif text-xl font-normal text-[hsl(var(--foreground))] mt-8 mb-3">
-              By Air: Direct Comfort into Lodwar Airport
-            </h3>
-            <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-8">
-              For travelers seeking seamless convenience, daily scheduled commercial and chartered flights operate from Nairobi's Wilson Airport directly into Lodwar Airport (LOK). The flight duration is approximately 1 hour and 40 minutes, offering breathtaking aerial panoramas of the Great Rift Valley, Mount Kulal, and the turquoise waters of Lake Turkana.
-            </p>
-
-            {/* Inset quote */}
-            <div className="my-10 p-8 border-l-2 border-[hsl(var(--accent))] bg-[hsl(var(--card))]">
-              <p className="font-serif italic text-lg text-[hsl(var(--foreground))] mb-2">
-                "For every kilometer of dust, there is a horizon that humbles you. For every challenge, there is the thrill of reaching one of Africa's last frontiers."
-              </p>
-              <span className="text-eyebrow text-[hsl(var(--accent))]" style={{ fontSize: "0.55rem" }}>
-                — Turkana Expedition Notes
-              </span>
-            </div>
-
-            {/* Section 2 */}
-            <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-14 mb-4">
-              Where to Stay: Luxora Hotel Lodwar
-            </h2>
-            <span className="gold-rule" />
-            <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
-              Welcome to Luxora Hotel Lodwar, where refined hospitality and authentic northern exploration meet. Situated directly adjacent to Lodwar Airport, Luxora provides an immediate sanctuary of quiet elegance upon touchdown.
-            </p>
-            <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
-              Our 36 private accommodations include Standard Double, Superior Double, and Twin rooms, each fully air-conditioned with en-suite bathrooms, high-speed WiFi, and plush linens. Dine in our signature restaurant, unwind in the panoramic lounge bar, or host regional summits in our state-of-the-art conference halls.
-            </p>
-
-            {/* Section 3 */}
-            <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-14 mb-4">
-              Things to Do in and Around Lodwar
-            </h2>
-            <span className="gold-rule" />
-            <ul className="space-y-4 my-6 text-[hsl(var(--muted-foreground))] font-light leading-relaxed">
-              <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-[hsl(var(--accent))] mt-2 flex-shrink-0" />
-                <div>
-                  <strong className="text-[hsl(var(--foreground))]">Central Turkana Desert Excursions:</strong> Traverse millennia-etched desert plateaus, dry river wadis, and volcanic terrain ideal for photography and nature walks.
+                <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-12 mb-4">
+                  2. Clothing: Dress for the Arid Climate
+                </h2>
+                <span className="gold-rule" />
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
+                  Turkana's hot, arid environment makes lightweight, breathable clothing a sensible choice:
+                </p>
+                <div className="bg-[hsl(var(--card))] border border-[hsl(var(--border))] p-6 my-6 space-y-2 text-xs text-[hsl(var(--muted-foreground))] font-light">
+                  <p>• Lightweight cotton or moisture-wicking shirts</p>
+                  <p>• Loose-fitting trousers or lightweight hiking pants</p>
+                  <p>• Long-sleeved shirts for direct sun protection</p>
+                  <p>• Comfortable walking shoes or lightweight hiking boots with tread for rocky terrain</p>
+                  <p>• Wide-brimmed safari hat and UV-blocking sunglasses</p>
+                  <p>• Light evening layer (temperatures can cool significantly in early morning)</p>
                 </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-[hsl(var(--accent))] mt-2 flex-shrink-0" />
-                <div>
-                  <strong className="text-[hsl(var(--foreground))]">Eliye Springs:</strong> Relax along the golden sands and freshwater palm springs of Lake Turkana, the world's largest permanent desert lake.
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-[hsl(var(--accent))] mt-2 flex-shrink-0" />
-                <div>
-                  <strong className="text-[hsl(var(--foreground))]">The Wadach Pyramids:</strong> Gaze upon nature's sculpted sand pyramid monuments, a geological wonder rising dramatically from the desert floor.
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-[hsl(var(--accent))] mt-2 flex-shrink-0" />
-                <div>
-                  <strong className="text-[hsl(var(--foreground))]">Turkana Cultural Village:</strong> Connect with the deep heritage, beadwork, songs, and traditions of the Turkana pastoralists.
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-[hsl(var(--accent))] mt-2 flex-shrink-0" />
-                <div>
-                  <strong className="text-[hsl(var(--foreground))]">Lodwar Town & Market:</strong> Wander the lively local bazaars filled with woven baskets, handcrafted wood carvings, and authentic daily life.
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="w-2 h-2 rounded-full bg-[hsl(var(--accent))] mt-2 flex-shrink-0" />
-                <div>
-                  <strong className="text-[hsl(var(--foreground))]">Namorutunga (The Standing Stones):</strong> Unravel the mysteries of ancient archaeoastronomical basalt pillars dating back over two millennia.
-                </div>
-              </li>
-            </ul>
 
-            {/* Section 4 */}
-            <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-14 mb-4">
-              Pro Tips for a Seamless Turkana Trip
-            </h2>
-            <span className="gold-rule" />
-            <div className="bg-[hsl(var(--card))] border border-[hsl(var(--border))] p-6 my-6 space-y-3 text-xs text-[hsl(var(--muted-foreground))] font-light">
-              <p>• <strong>Currency & Payments:</strong> Carry cash for remote market excursions, though MPESA and card facilities are accepted at Luxora Hotel.</p>
-              <p>• <strong>Hydration & Sun Protection:</strong> Northern Kenya is arid and sunny year-round. Carry mineral hydration, UV protection, hats, and lightweight linen attire.</p>
-              <p>• <strong>Advance Reservations:</strong> Due to regular NGO symposiums and corporate travel, reserve your room and airport transfer ahead of time.</p>
-              <p>• <strong>Cultural Respect:</strong> Always seek permission before photographing local community members; gracious interactions open heartfelt doors.</p>
-            </div>
+                <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-12 mb-4">
+                  3. Sun Protection, Hydration & Health
+                </h2>
+                <span className="gold-rule" />
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
+                  Carry sunscreen with broad-spectrum SPF 30 or higher, lip balm with SPF, and a lightweight scarf or buff to protect against wind-borne dust on unpaved roads.
+                </p>
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-6">
+                  Hydration is paramount. Always carry sealed mineral water throughout the day. Do not assume lake water or untreated local sources are drinkable.
+                </p>
 
-            {/* Conclusion */}
-            <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-14 mb-4">
-              Why Turkana is Worth It
-            </h2>
-            <span className="gold-rule" />
-            <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
-              Turkana is not just another trip; it is an encounter with human origins and raw natural grandeur. And with Luxora Hotel Lodwar as your base of comfort, you will never have to sacrifice rest for the sake of adventure.
-            </p>
+                <div className="my-10 p-8 border-l-2 border-[hsl(var(--accent))] bg-[hsl(var(--card))]">
+                  <p className="font-serif italic text-lg text-[hsl(var(--foreground))] mb-2">
+                    "Do not enter Lake Turkana unless an experienced local operator has explicitly confirmed safety. Nile crocodiles inhabit the waters. Always heed local advice."
+                  </p>
+                  <span className="text-eyebrow text-[hsl(var(--accent))]" style={{ fontSize: "0.55rem" }}>
+                    — Turkana Safety Guidelines
+                  </span>
+                </div>
+
+                <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-12 mb-4">
+                  4. Base Yourself in Lodwar: Luxora Hotel
+                </h2>
+                <span className="gold-rule" />
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
+                  Lodwar is the practical launchpad for every northern excursion. If arriving by air, resting for a night at Luxora Hotel Lodwar — located immediately adjacent to Lodwar Airport — gives you time to settle in, organize 4x4 vehicles, and coordinate routes with our concierge.
+                </p>
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-6">
+                  Luxora provides complimentary 24/7 airport transfers, secure luggage storage while you are away on multi-day excursions, and climate-controlled accommodations to recharge.
+                </p>
+              </>
+            )}
+
+            {/* ── ARTICLE 2: EXPLORING TURKANA PLACES TO VISIT ───────────── */}
+            {post.id === "exploring-turkana-places-to-visit" && (
+              <>
+                <p className="text-lead text-[hsl(var(--foreground))] font-light leading-relaxed mb-8">
+                  Turkana offers a side of Kenya that many travelers have yet to experience. Its landscapes stretch from the turquoise waters of Lake Turkana to volcanic craters, open plateaus, and ancient archaeological monuments. Its communities have adapted to this arid environment over millennia, creating rich traditions and deep connections to the land.
+                </p>
+
+                <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-12 mb-4">
+                  1. Lake Turkana: The Jade Sea
+                </h2>
+                <span className="gold-rule" />
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
+                  Known as the Jade Sea, Lake Turkana is the world's largest permanent desert lake and forms part of a UNESCO World Heritage Site. The contrast between its shimmering turquoise expanse and the surrounding volcanic terrain creates scenery that shifts with the light from dawn to twilight.
+                </p>
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-8">
+                  Observe the lake during early morning or sunset hours for extraordinary photography. Take time to learn about the fishing communities whose heritage is intimately entwined with its waters.
+                </p>
+
+                <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-12 mb-4">
+                  2. Eliye Springs: Coastal Calm in the Desert
+                </h2>
+                <span className="gold-rule" />
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
+                  Situated along the western shore, Eliye Springs offers soft sand beaches, natural freshwater palm springs, and gentle lake breezes. It is an ideal escape from the heat, easily accessible from Lodwar with a private transfer arranged through the hotel.
+                </p>
+
+                <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-12 mb-4">
+                  3. Central Island National Park
+                </h2>
+                <span className="gold-rule" />
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
+                  Rising from the lake, Central Island features three volcanic crater lakes — Crocodile Lake, Flamingo Lake, and Tilapia Lake. It is an exceptional destination for geological exploration, birdwatching, and observing Nile crocodiles in their ancestral habitat.
+                </p>
+
+                <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-12 mb-4">
+                  4. Ancient Astronomy at Namorutunga
+                </h2>
+                <span className="gold-rule" />
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-6">
+                  South of Lodwar lie the Namorutunga standing stones, basalt megalithic pillars thought to date back more than two thousand years. Archaeological studies suggest they served as an early calendar system aligned with specific constellations.
+                </p>
+
+                <div className="my-10 p-8 border-l-2 border-[hsl(var(--accent))] bg-[hsl(var(--card))]">
+                  <p className="font-serif italic text-lg text-[hsl(var(--foreground))] mb-2">
+                    "Lodwar is not merely a transit point — it is where sophistication meets the frontier. Luxora Hotel provides the sanctuary every explorer desires."
+                  </p>
+                </div>
+              </>
+            )}
+
+            {/* ── ARTICLE 3: THE ULTIMATE TURKANA ROAD TRIP ──────────────── */}
+            {post.id === "turkana-road-trip-guide" && (
+              <>
+                <p className="text-lead text-[hsl(var(--foreground))] font-light leading-relaxed mb-8">
+                  There is something magnetic about Kenya's far north — the endless horizons, raw desert beauty, and the feeling that you have left the world behind. Turkana is not just a destination; it is an adventure that rewires your idea of remote.
+                </p>
+
+                <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-12 mb-4">
+                  Getting There: Overland & Aerial Routes
+                </h2>
+                <span className="gold-rule" />
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
+                  Overland travelers journey north from Nairobi via Kitale and Kapenguria before descending into the Great Rift Valley toward Lodwar. A high-clearance 4x4 with dual spare tires and ample fuel reserves is recommended.
+                </p>
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-8">
+                  Alternatively, commercial and chartered flights connect Nairobi's Wilson Airport directly to Lodwar Airport in approximately 1 hour and 40 minutes, offering sweeping views of the Rift Valley.
+                </p>
+
+                <h2 className="font-serif text-2xl md:text-3xl font-light text-[hsl(var(--foreground))] mt-12 mb-4">
+                  Where to Stay: Luxora Hotel Lodwar
+                </h2>
+                <span className="gold-rule" />
+                <p className="text-[hsl(var(--muted-foreground))] font-light leading-relaxed mb-4">
+                  Welcome to Luxora Hotel Lodwar, where modern comfort and northern adventure blend seamlessly. Situated immediately adjacent to Lodwar Airport, Luxora features 36 air-conditioned rooms, fine dining, executive conference facilities, and attentive 24/7 concierge service.
+                </p>
+              </>
+            )}
+
           </article>
 
           {/* Article Footer & Booking Callout */}
@@ -238,7 +264,7 @@ const BlogPost = () => {
               </h3>
               <span className="gold-rule-center" />
               <p className="text-sm text-[hsl(var(--muted-foreground))] max-w-md mx-auto mb-8 font-light">
-                Our front desk and concierge team stand ready to reserve your room and assist with regional excursion itineraries.
+                Our front desk and concierge team stand ready to reserve your room and assist with regional excursion itineraries and airport transfers.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/reservations" className="btn-gold">
