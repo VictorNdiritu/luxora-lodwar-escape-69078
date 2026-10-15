@@ -2,13 +2,17 @@ import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 /**
- * Scrolls to the top of the page on every route change.
+ * Universally safe scroll to top on route change.
  */
 export const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'instant' });
+    try {
+      window.scrollTo(0, 0);
+    } catch {
+      // safe fallback
+    }
   }, [pathname]);
 
   return null;

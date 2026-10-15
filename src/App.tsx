@@ -28,48 +28,48 @@ import { ErrorBoundary } from "./components/ErrorBoundary";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <ScrollToTop />
-        <ErrorBoundary>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <ScrollToTop />
           <PageTransition>
             <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/rooms" element={<Rooms />} />
-            <Route path="/rooms/:slug" element={<RoomDetail />} />
-            <Route path="/dining" element={<Dining />} />
-            <Route path="/amenities" element={<Amenities />} />
-            <Route path="/facilities" element={<Amenities />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/experiences" element={<Experiences />} />
-            <Route path="/mice" element={<MICEPage />} />
-            <Route path="/offers" element={<Offers />} />
-            <Route path="/reservations" element={<Reservations />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/policies" element={<Policies />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:slug" element={<BlogPost />} />
-            {/* Direct aliases for newly added blog markdown pages */}
-            <Route path="/Blog_1" element={<BlogPost directSlug="turkana-packing-travel-guide" />} />
-            <Route path="/blog_1" element={<BlogPost directSlug="turkana-packing-travel-guide" />} />
-            <Route path="/Blog-1" element={<BlogPost directSlug="turkana-packing-travel-guide" />} />
-            <Route path="/blog-1" element={<BlogPost directSlug="turkana-packing-travel-guide" />} />
-            <Route path="/Blog_2" element={<BlogPost directSlug="exploring-turkana-places-to-visit" />} />
-            <Route path="/blog_2" element={<BlogPost directSlug="exploring-turkana-places-to-visit" />} />
-            <Route path="/Blog-2" element={<BlogPost directSlug="exploring-turkana-places-to-visit" />} />
-            <Route path="/blog-2" element={<BlogPost directSlug="exploring-turkana-places-to-visit" />} />
-            {/* Catch-all route */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </PageTransition>
-      </ErrorBoundary>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/rooms" element={<Rooms />} />
+              <Route path="/rooms/:slug" element={<RoomDetail />} />
+              <Route path="/dining" element={<Dining />} />
+              <Route path="/amenities" element={<Amenities />} />
+              <Route path="/facilities" element={<Amenities />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/experiences" element={<Experiences />} />
+              <Route path="/mice" element={<MICEPage />} />
+              <Route path="/offers" element={<Offers />} />
+              <Route path="/reservations" element={<Reservations />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/policies" element={<Policies />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              {/* Direct aliases for newly added blog markdown pages */}
+              <Route path="/Blog_1" element={<BlogPost directSlug="turkana-packing-travel-guide" />} />
+              <Route path="/blog_1" element={<BlogPost directSlug="turkana-packing-travel-guide" />} />
+              <Route path="/Blog-1" element={<BlogPost directSlug="turkana-packing-travel-guide" />} />
+              <Route path="/blog-1" element={<BlogPost directSlug="turkana-packing-travel-guide" />} />
+              <Route path="/Blog_2" element={<BlogPost directSlug="exploring-turkana-places-to-visit" />} />
+              <Route path="/blog_2" element={<BlogPost directSlug="exploring-turkana-places-to-visit" />} />
+              <Route path="/Blog-2" element={<BlogPost directSlug="exploring-turkana-places-to-visit" />} />
+              <Route path="/blog-2" element={<BlogPost directSlug="exploring-turkana-places-to-visit" />} />
+              {/* Catch-all route */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </PageTransition>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </ErrorBoundary>
 );
 
 export default App;
