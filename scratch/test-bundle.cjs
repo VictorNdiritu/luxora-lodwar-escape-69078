@@ -2,7 +2,7 @@ global.MutationObserver = class { observe(){} disconnect(){} };
 const fs = require('fs');
 const path = require('path');
 
-const bundlePath = path.resolve('dist/assets/index-BMXs8ick.js');
+const bundlePath = path.resolve('dist/assets/index-C8X5hdSk.js');
 
 const makeElement = (tag) => ({
   tagName: tag,
