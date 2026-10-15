@@ -12,8 +12,8 @@ import miceImg         from "@/assets/mice-conference.jpg";
 import standardDouble1 from "@/assets/new-images/sd.png";
 import superiorDouble1 from "@/assets/new-images/sup.png";
 import twinRoom1       from "@/assets/new-images/suit.png";
-import turkanaVillage  from "@/assets/experiences/Turkana Cultural Village.jpg";
-import eliyeSprings    from "@/assets/experiences/Eliye spirings.jpg";
+import turkanaVillage  from "@/assets/newest clear images/turkana village.jpg";
+import eliyeSprings    from "@/assets/newest clear images/Eliye springs.jpg";
 
 import { UtensilsCrossed, Wifi, Plane, BellRing, Car, Building2, Bed, Users } from "lucide-react";
 

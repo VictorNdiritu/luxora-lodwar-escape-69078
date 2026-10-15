@@ -16,12 +16,12 @@ import standardDouble2 from "@/assets/new-images/sdr.png";
 import superiorDouble1 from "@/assets/new-images/sup.png";
 import superiorDouble2 from "@/assets/new-images/sup Double.png";
 import twinRoom1 from "@/assets/new-images/suit.png";
-import twinRoom2 from "@/assets/new-images/suite.png";
-import excursionDesert from "@/assets/experiences/Central Turkana Desert Excursions.jpg";
-import excursionEliye from "@/assets/experiences/Eliye spirings.jpg";
+import excursionDesert from "@/assets/newest clear images/lake turkana central island.jpg";
+import excursionEliye from "@/assets/newest clear images/Eliye springs.jpg";
 import excursionTown from "@/assets/experiences/Lodwar Town & Market.jpg";
-import excursionVillage from "@/assets/experiences/Turkana Cultural Village.jpg";
-import excursionPyramids from "@/assets/experiences/Wadach Pyramids.jpeg";
+import excursionVillage from "@/assets/newest clear images/turkana village.jpg";
+import excursionPyramids from "@/assets/newest clear images/wadachpyramids_enhanced.png";
+import namorutungaImg from "@/assets/newest clear images/Namorutunga Standing Stones.png";
 
 import { Eye, X, ChevronLeft, ChevronRight, Grid } from "lucide-react";
 
@@ -120,6 +120,12 @@ const GALLERY_ITEMS: GalleryItem[] = [
   {
     src: excursionTown,
     title: "Lodwar Town & Traditional Handicrafts Market",
+    category: "excursions",
+    categoryLabel: "Turkana Excursions",
+  },
+  {
+    src: namorutungaImg,
+    title: "Namorutunga Archaeoastronomical Standing Stones",
     category: "excursions",
     categoryLabel: "Turkana Excursions",
   },
