@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import heroImage from "@/assets/hero-hotel.jpg";
 
 interface PageHeroProps {
+  badge?:    string;
   eyebrow?:  string;
   headline:  string;
   sub?:      string;
@@ -22,6 +23,7 @@ interface PageHeroProps {
  * The image uses a Ken-Burns slow zoom, headlines animate in on load.
  */
 export const PageHero = ({
+  badge,
   eyebrow,
   headline,
   sub,
@@ -71,6 +73,20 @@ export const PageHero = ({
         className="relative z-10 text-center px-6 max-w-5xl mx-auto flex flex-col items-center"
         style={{ paddingTop: "80px" }}   /* clear the fixed header */
       >
+        {badge && (
+          <div
+            className="inline-flex items-center gap-2.5 px-4 py-1.5 border border-[hsl(38_45%_55%/0.4)] bg-[hsl(210_22%_8%/0.65)] backdrop-blur-md rounded-full mb-6"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--accent))] animate-pulse" />
+            <span
+              className="text-eyebrow text-[hsl(40_18%_97%)]"
+              style={{ fontSize: "0.55rem", letterSpacing: "0.22em" }}
+            >
+              {badge}
+            </span>
+          </div>
+        )}
+
         {eyebrow && (
           <p
             className="text-eyebrow text-[hsl(var(--accent))] mb-6 reveal"
