@@ -14,6 +14,7 @@ import restaurantImg from "@/assets/new-images/restaurant.png";
 import standardDouble1 from "@/assets/new-images/sd.png";
 import standardDouble2 from "@/assets/new-images/sdr.png";
 import superiorDouble1 from "@/assets/new-images/sup.png";
+import superiorDouble2 from "@/assets/new-images/sup Double.png";
 import twinRoom1 from "@/assets/new-images/suit.png";
 import twinRoom2 from "@/assets/new-images/suite.png";
 import excursionDesert from "@/assets/newest clear images/lake turkana central island.jpg";
