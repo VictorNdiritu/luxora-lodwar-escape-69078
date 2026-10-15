@@ -289,10 +289,10 @@
 /* ─── Hairline borders ─── */
 .border-gold { border-color: hsl(var(--accent) / 0.35) !important; }
 
-/* ─── Scroll-triggered reveal (JS adds .revealed class) ─── */
+/* ─── Scroll-triggered reveal (Defaults to visible so pages never render blank/white) ─── */
 .reveal {
-  opacity: 0;
-  transform: translateY(28px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.8s var(--ease-luxury), transform 0.8s var(--ease-luxury);
 }
 .reveal.revealed {
@@ -302,8 +302,8 @@
 
 /* Stagger children */
 .reveal-stagger > * {
-  opacity: 0;
-  transform: translateY(28px);
+  opacity: 1;
+  transform: none;
   transition: opacity 0.7s var(--ease-luxury), transform 0.7s var(--ease-luxury);
 }
 .reveal-stagger.revealed > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0ms; }
