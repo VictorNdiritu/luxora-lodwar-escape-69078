@@ -1,207 +1,165 @@
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { MICE } from "@/components/MICE";
-import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet";
-import { Users, Presentation, Coffee, Wifi, Utensils, Building2, Calendar, CheckCircle2 } from "lucide-react";
+import { BannerHero } from "@/components/PageHero";
+import { ScrollReveal } from "@/hooks/useScrollReveal";
+import miceImg from "@/assets/mice-conference.jpg";
 
-const MICEPage = () => {
-  const facilities = [
-    {
-      icon: Building2,
-      title: "Conference Hall",
-      description: "Spacious ballroom accommodating up to 200 guests with theater-style seating",
-      capacity: "200 guests"
-    },
-    {
-      icon: Users,
-      title: "Meeting Rooms",
-      description: "Multiple breakout rooms for workshops, board meetings, and private sessions",
-      capacity: "10-30 guests each"
-    },
-    {
-      icon: Presentation,
-      title: "AV Equipment",
-      description: "State-of-the-art projectors, sound systems, video conferencing, and presentation tools",
-      capacity: "All venues"
-    },
-    {
-      icon: Wifi,
-      title: "High-Speed Internet",
-      description: "Dedicated fiber connection ensuring seamless connectivity throughout your event",
-      capacity: "Unlimited bandwidth"
-    },
-    {
-      icon: Utensils,
-      title: "Catering Services",
-      description: "Customized menus from breakfast meetings to gala dinners with local and international cuisine",
-      capacity: "All dietary needs"
-    },
-    {
-      icon: Coffee,
-      title: "Break Services",
-      description: "Coffee breaks, refreshments, and buffet services tailored to your schedule",
-      capacity: "Continuous service"
-    }
-  ];
+const facilities = [
+  { title: "Conference Hall",     desc: "Spacious ballroom accommodating up to 200 guests with theatre-style seating and a built-in stage.", capacity: "Up to 200 guests" },
+  { title: "Meeting Rooms",       desc: "Multiple breakout rooms for workshops, board meetings and private sessions, each with natural light.", capacity: "10–30 guests each" },
+  { title: "AV Equipment",        desc: "State-of-the-art projectors, sound systems, video conferencing and full presentation tools throughout.", capacity: "All venues" },
+  { title: "High-Speed Internet", desc: "Dedicated fibre connection ensuring seamless connectivity throughout your event.", capacity: "Unlimited bandwidth" },
+  { title: "Catering Services",   desc: "Customised menus from breakfast meetings to gala dinners, with local and international cuisine.", capacity: "All dietary needs met" },
+  { title: "Break Services",      desc: "Coffee breaks, refreshments and buffet services tailored to your schedule and event flow.", capacity: "Continuous service" },
+];
 
-  const packages = [
-    {
-      name: "Half-Day Package",
-      duration: "4 hours",
-      includes: ["Conference room rental", "Basic AV equipment", "Morning/afternoon tea", "High-speed WiFi", "Notepads & pens"]
-    },
-    {
-      name: "Full-Day Package",
-      duration: "8 hours",
-      includes: ["Conference room rental", "Premium AV equipment", "2 coffee breaks", "Buffet lunch", "High-speed WiFi", "Stationery & materials"]
-    },
-    {
-      name: "Residential Package",
-      duration: "Multi-day",
-      includes: ["Conference facilities", "Accommodation", "Full-board meals", "Team activities", "Airport transfers", "Dedicated event coordinator"]
-    }
-  ];
+const packages = [
+  {
+    name: "Half-Day Package",
+    duration: "4 hours",
+    includes: ["Conference room rental", "Basic AV equipment", "Morning or afternoon tea", "High-speed WiFi", "Notepads & stationery"],
+  },
+  {
+    name: "Full-Day Package",
+    duration: "8 hours",
+    includes: ["Conference room rental", "Premium AV equipment", "2 coffee breaks", "Buffet lunch", "High-speed WiFi", "All stationery & materials"],
+  },
+  {
+    name: "Residential Package",
+    duration: "Multi-day",
+    includes: ["Full conference facilities", "Accommodation", "Full-board meals", "Team activities", "Airport transfers", "Dedicated event coordinator"],
+  },
+];
 
-  return (
-    <>
-      <Helmet>
-        <title>MICE - Meetings, Conferences & Events | Luxora Hotel, Lodwar</title>
-        <meta name="description" content="Host your corporate meetings, conferences, and events at Luxora Hotel, Lodwar. Elegant venues, high-speed connectivity, gourmet catering, and professional event coordination in Northern Kenya." />
-        <link rel="canonical" href="https://luxorahotels.co.ke/mice" />
-        <meta property="og:title" content="MICE - Corporate Events & Conferences | Luxora Hotel, Lodwar" />
-        <meta property="og:description" content="Premier MICE destination in Lodwar with elegant meeting spaces, modern facilities, and dedicated event support." />
-        <meta property="og:type" content="website" />
-      </Helmet>
+const MICEPage = () => (
+  <>
+    <Helmet>
+      <title>Meetings, Conferences & Events | Luxora Hotel, Lodwar</title>
+      <meta name="description" content="Host your corporate meetings, conferences and events at Luxora Hotel, Lodwar. Elegant venues, high-speed connectivity, gourmet catering and professional event coordination in Northern Kenya." />
+      <link rel="canonical" href="https://luxorahotels.co.ke/mice" />
+      <meta property="og:title" content="MICE — Corporate Events & Conferences | Luxora Hotel, Lodwar" />
+      <meta property="og:description" content="Premier MICE destination in Lodwar with elegant meeting spaces, modern facilities and dedicated event support." />
+      <meta property="og:type" content="website" />
+    </Helmet>
 
-      <div className="min-h-screen">
-        <Header />
-        
-        {/* Hero Section */}
-        <section className="pt-32 pb-20 bg-gradient-to-b from-muted/50 to-background">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <span className="text-accent font-semibold text-sm uppercase tracking-wider">
-                Meetings, Incentives, Conferences & Events
-              </span>
-              <h1 className="text-4xl md:text-6xl font-bold text-foreground mt-4 mb-6">
-                Host Your Event at Luxora
-              </h1>
-              <p className="text-xl text-muted-foreground mb-8">
-                Where professionalism meets unparalleled comfort. Your premier destination for corporate retreats, strategic team-building experiences, and impactful business gatherings in Northern Kenya.
+    <ScrollReveal />
+    <div className="min-h-screen">
+      <Header />
+
+      <BannerHero
+        eyebrow="Meetings, Incentives, Conferences & Events"
+        headline="Host Your Event at Luxora"
+        image={miceImg}
+        imageAlt="Luxora conference and meeting facilities"
+      />
+
+      {/* Intro */}
+      <section className="section-pad bg-[hsl(var(--background))]">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="reveal">
+              <p className="text-eyebrow text-[hsl(var(--accent))] mb-5" style={{ letterSpacing: "0.25em" }}>
+                Corporate Excellence
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link to="/reservations">
-                  <Button variant="luxury" size="lg">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    Plan Your Event
-                  </Button>
-                </Link>
-                <Link to="/contact">
-                  <Button variant="outline" size="lg">
-                    Request a Proposal
-                  </Button>
-                </Link>
+              <h2 className="text-headline mb-6">MICE at Luxora</h2>
+              <span className="gold-rule" />
+              <div className="space-y-5 text-lead text-[hsl(var(--muted-foreground))]">
+                <p>
+                  Where professionalism meets unparalleled comfort. Luxora Hotel, Lodwar is your premier destination for corporate retreats, strategic team-building experiences, and impactful business gatherings in Northern Kenya.
+                </p>
+                <p>
+                  Our dedicated events team works closely with you from initial enquiry through to on-the-day coordination, ensuring every detail of your event is seamlessly executed.
+                </p>
+                <p className="text-sm italic">
+                  Perfect for NGO gatherings, corporate training, product launches and executive retreats.
+                </p>
+              </div>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link to="/reservations" className="btn-primary"><span>Plan Your Event</span></Link>
+                <Link to="/contact" className="btn-outline"><span>Request a Proposal</span></Link>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* MICE Component */}
-        <MICE />
-
-        {/* Facilities Section */}
-        <section className="py-20 bg-card">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                World-Class Facilities
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Everything you need for a successful event, all in one place
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {facilities.map((facility, index) => (
-                <div key={index} className="bg-muted/30 p-6 rounded-lg">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/20 mb-4">
-                    <facility.icon className="w-6 h-6 text-accent" />
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-2">{facility.title}</h3>
-                  <p className="text-muted-foreground mb-3">{facility.description}</p>
-                  <p className="text-sm text-accent font-semibold">{facility.capacity}</p>
-                </div>
-              ))}
+            <div className="relative overflow-hidden reveal" style={{ minHeight: "480px" }}>
+              <img src={miceImg} alt="Luxora conference facilities" className="img-cover" />
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Packages Section */}
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Flexible Event Packages
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Tailored solutions for events of any size and duration
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-              {packages.map((pkg, index) => (
-                <div key={index} className="bg-card p-8 rounded-lg shadow-lg">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">{pkg.name}</h3>
-                  <p className="text-accent font-semibold mb-6">{pkg.duration}</p>
-                  <ul className="space-y-3 mb-8">
-                    {pkg.includes.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                        <span className="text-muted-foreground">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  <Link to="/reservations">
-                    <Button variant="outline" className="w-full">
-                      Request Quote
-                    </Button>
-                  </Link>
-                </div>
-              ))}
-            </div>
+      {/* Facilities */}
+      <section className="section-pad bg-[hsl(var(--muted))]">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="text-center mb-16 reveal">
+            <p className="text-eyebrow text-[hsl(var(--accent))] mb-4" style={{ letterSpacing: "0.25em" }}>Facilities</p>
+            <h2 className="text-headline mb-4">World-Class Facilities</h2>
+            <span className="gold-rule-center" />
           </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-b from-accent/10 to-background">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Ready to Plan Your Next Event?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Our dedicated events team is ready to help you create a memorable and successful gathering at Luxora
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/reservations">
-                <Button variant="luxury" size="lg">
-                  Book Your Event
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button variant="outline" size="lg">
-                  Contact Events Team
-                </Button>
-              </Link>
-            </div>
+          <div className="reveal-stagger grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[hsl(var(--border))]">
+            {facilities.map(({ title, desc, capacity }) => (
+              <div key={title} className="bg-[hsl(var(--background))] p-8">
+                <h3 className="font-serif text-xl mb-3 font-light">{title}</h3>
+                <p className="text-sm font-light text-[hsl(var(--muted-foreground))] leading-relaxed mb-4">{desc}</p>
+                <p className="text-eyebrow text-[hsl(var(--accent))]" style={{ fontSize: "0.6rem", letterSpacing: "0.18em" }}>
+                  {capacity}
+                </p>
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <Footer />
-      </div>
-    </>
-  );
-};
+      {/* Packages */}
+      <section className="section-pad bg-[hsl(var(--background))]">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="text-center mb-16 reveal">
+            <p className="text-eyebrow text-[hsl(var(--accent))] mb-4" style={{ letterSpacing: "0.25em" }}>Packages</p>
+            <h2 className="text-headline mb-4">Flexible Event Packages</h2>
+            <span className="gold-rule-center" />
+            <p className="text-lead text-[hsl(var(--muted-foreground))] mx-auto">Tailored solutions for events of any size and duration.</p>
+          </div>
+          <div className="reveal-stagger grid md:grid-cols-3 gap-px bg-[hsl(var(--border))]">
+            {packages.map((pkg) => (
+              <div key={pkg.name} className="bg-[hsl(var(--card))] p-10">
+                <h3 className="font-serif text-2xl mb-1 font-light">{pkg.name}</h3>
+                <p className="text-eyebrow text-[hsl(var(--accent))] mb-8" style={{ fontSize: "0.6rem", letterSpacing: "0.2em" }}>{pkg.duration}</p>
+                <ul className="space-y-3 mb-10">
+                  {pkg.includes.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm font-light text-[hsl(var(--muted-foreground))]">
+                      <span className="w-4 h-px bg-[hsl(var(--accent))] flex-shrink-0 mt-2.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <Link to="/reservations" className="btn-outline w-full justify-center"><span>Request Quote</span></Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="section-pad-sm bg-[hsl(var(--foreground))] text-center">
+        <div className="container mx-auto px-6 reveal">
+          <h2 className="font-serif text-[hsl(var(--background))] mb-6" style={{ fontSize: "clamp(1.75rem, 3vw, 2.5rem)", fontWeight: 300 }}>
+            Ready to Plan Your Next Event?
+          </h2>
+          <p className="text-lead text-[hsl(var(--background))/0.6] mb-10 mx-auto text-center">
+            Our dedicated events team is ready to help you create a memorable and successful gathering at Luxora.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link to="/reservations" className="btn-gold"><span>Book Your Event</span></Link>
+            <Link to="/contact" className="btn-outline" style={{ borderColor: "hsl(var(--background)/0.3)", color: "hsl(var(--background))" }}>
+              <span>Contact Events Team</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  </>
+);
 
 export default MICEPage;

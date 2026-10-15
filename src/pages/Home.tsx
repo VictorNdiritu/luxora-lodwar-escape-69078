@@ -1,515 +1,486 @@
-import React, { useState, useEffect } from "react";
-import { Header } from "@/components/Header";
-import { Hero } from "@/components/Hero";
-import { Footer } from "@/components/Footer";
-import { MICE } from "@/components/MICE";
-import { Excursions } from "@/components/Excursions";
-import { Button } from "@/components/ui/button";
-import {
-  Building2,
-  Bed,
-  MapPin,
-  Utensils,
-  Wifi,
-  Car,
-  Users,
-  Mail,
-  Sparkles,
-} from "lucide-react";
-import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { PageHero } from "@/components/PageHero";
+import { ScrollReveal } from "@/hooks/useScrollReveal";
 
-// ✨ Opening Soon Banner Component
-const OpeningSoonBanner = () => {
-  const [visible, setVisible] = useState(true);
+// ── Images ──────────────────────────────────────────────────────────────────
+import heroImg         from "@/assets/hero-hotel.jpg";
+import restaurantImg   from "@/assets/new-images/restaurant.png";
+import miceImg         from "@/assets/mice-conference.jpg";
+import standardDouble1 from "@/assets/new-images/sd.png";
+import superiorDouble1 from "@/assets/new-images/sup.png";
+import twinRoom1       from "@/assets/new-images/suit.png";
+import turkanaVillage  from "@/assets/experiences/Turkana Cultural Village.jpg";
+import eliyeSprings    from "@/assets/experiences/Eliye spirings.jpg";
 
-  if (!visible) return null;
-
-  return (
+// ── Opening Soon Banner ──────────────────────────────────────────────────────
+const OpeningSoonBanner = () => (
+  <div
+    style={{
+      position: "relative",
+      background: "linear-gradient(90deg, hsl(210 22% 16%) 0%, hsl(38 45% 28%) 50%, hsl(210 22% 16%) 100%)",
+      overflow: "hidden",
+    }}
+  >
+    {/* shimmer */}
     <div
       style={{
-        position: "relative",
-        width: "100%",
-        background: "linear-gradient(90deg, #1a0a00 0%, #3d1f00 30%, #c8860a 50%, #3d1f00 70%, #1a0a00 100%)",
-        overflow: "hidden",
-        padding: "0",
-        zIndex: 50,
+        position: "absolute", inset: 0,
+        background: "linear-gradient(120deg, transparent 30%, rgba(255,220,130,0.15) 50%, transparent 70%)",
+        backgroundSize: "200% 100%",
+        animation: "shimmer 3.5s infinite linear",
       }}
-    >
-      {/* Shimmer overlay */}
-      <div
+    />
+    <div className="container mx-auto px-6 py-3 flex items-center justify-center gap-4 relative">
+      <span style={{ color: "hsl(var(--accent))", fontSize: "0.5rem", letterSpacing: "8px", opacity: 0.7 }}>
+        ✦ ✦ ✦
+      </span>
+      <p
+        className="text-center"
         style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "linear-gradient(120deg, transparent 0%, rgba(255,215,100,0.18) 40%, rgba(255,215,100,0.38) 50%, rgba(255,215,100,0.18) 60%, transparent 100%)",
-          animation: "shimmer 3s infinite linear",
-          backgroundSize: "200% 100%",
-        }}
-      />
-
-      {/* Top decorative line */}
-      <div
-        style={{
-          height: "2px",
-          background: "linear-gradient(90deg, transparent, #e8b84b, #fff8e1, #e8b84b, transparent)",
-        }}
-      />
-
-      {/* Content */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "16px",
-          padding: "14px 24px",
-          position: "relative",
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: "clamp(0.75rem, 2vw, 0.9rem)",
+          fontWeight: 400,
+          color: "hsl(40 18% 94%)",
+          letterSpacing: "0.22em",
+          textTransform: "uppercase",
         }}
       >
-        {/* Left ornament */}
-        <span style={{ color: "#e8b84b", fontSize: "18px", letterSpacing: "4px", opacity: 0.8 }}>
-          ✦ ✦ ✦
-        </span>
+        Opening Soon — Lodwar's Finest Boutique Hotel
+      </p>
+      <span style={{ color: "hsl(var(--accent))", fontSize: "0.5rem", letterSpacing: "8px", opacity: 0.7 }}>
+        ✦ ✦ ✦
+      </span>
+    </div>
+  </div>
+);
 
-        {/* Main text */}
-        <div style={{ textAlign: "center" }}>
-          <span
-            style={{
-              fontFamily: "'Playfair Display', 'Georgia', serif",
-              fontSize: "clamp(13px, 2.5vw, 17px)",
-              fontWeight: "600",
-              color: "#fff8e1",
-              letterSpacing: "0.25em",
-              textTransform: "uppercase",
-              textShadow: "0 0 20px rgba(232,184,75,0.6), 0 1px 2px rgba(0,0,0,0.5)",
-            }}
-          >
-            Opening Soon
-          </span>
-          <span
-            style={{
-              display: "inline-block",
-              marginLeft: "14px",
-              fontFamily: "'Playfair Display', 'Georgia', serif",
-              fontSize: "clamp(11px, 1.8vw, 13px)",
-              color: "#e8b84b",
-              fontStyle: "italic",
-              letterSpacing: "0.12em",
-              opacity: 0.9,
-            }}
-          >
-            — Lodwar's Finest Boutique Hotel
-          </span>
-        </div>
+// ── Room Card ────────────────────────────────────────────────────────────────
+interface RoomCardProps {
+  title:  string;
+  sub:    string;
+  count:  string;
+  image:  string;
+  slug:   string;
+  flip?:  boolean;
+}
 
-        {/* Right ornament */}
-        <span style={{ color: "#e8b84b", fontSize: "18px", letterSpacing: "4px", opacity: 0.8 }}>
-          ✦ ✦ ✦
-        </span>
-
-        {/* Close button */}
-        <button
-          onClick={() => setVisible(false)}
-          aria-label="Dismiss banner"
-          style={{
-            position: "absolute",
-            right: "16px",
-            top: "50%",
-            transform: "translateY(-50%)",
-            background: "none",
-            border: "1px solid rgba(232,184,75,0.35)",
-            borderRadius: "50%",
-            color: "#e8b84b",
-            width: "26px",
-            height: "26px",
-            cursor: "pointer",
-            fontSize: "14px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            opacity: 0.7,
-            transition: "opacity 0.2s",
-            lineHeight: 1,
-          }}
-          onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-          onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
-        >
-          ×
-        </button>
+const RoomCard = ({ title, sub, count, image, slug, flip }: RoomCardProps) => (
+  <div className={`grid md:grid-cols-2 gap-0 items-stretch reveal ${flip ? "md:[direction:rtl]" : ""}`}>
+    <div className="relative overflow-hidden" style={{ minHeight: "420px" }}>
+      <img
+        src={image}
+        alt={title}
+        className="img-cover transition-transform duration-[1200ms] ease-[cubic-bezier(.76,0,.24,1)] hover:scale-105"
+        style={{ direction: "ltr" }}
+      />
+    </div>
+    <div
+      className="flex flex-col justify-center px-10 py-14 bg-[hsl(var(--card))]"
+      style={{ direction: "ltr" }}
+    >
+      <p className="text-eyebrow text-[hsl(var(--accent))] mb-4" style={{ letterSpacing: "0.22em" }}>
+        {count}
+      </p>
+      <h3 className="text-headline mb-4">{title}</h3>
+      <span className="gold-rule" />
+      <p className="text-lead text-[hsl(var(--muted-foreground))] mb-8">{sub}</p>
+      <div className="flex flex-wrap gap-4 items-center">
+        <Link to={`/reservations?room=${slug}`} className="btn-primary self-start">
+          <span>Reserve This Room</span>
+        </Link>
+        <Link to={`/rooms/${slug}`} className="btn-outline self-start text-xs">
+          <span>Explore Details</span>
+        </Link>
       </div>
+    </div>
+  </div>
+);
 
-      {/* Bottom decorative line */}
-      <div
-        style={{
-          height: "2px",
-          background: "linear-gradient(90deg, transparent, #e8b84b, #fff8e1, #e8b84b, transparent)",
-        }}
+// ── Stat ─────────────────────────────────────────────────────────────────────
+const Stat = ({ num, label }: { num: string; label: string }) => (
+  <div className="text-center">
+    <p
+      className="font-serif text-[hsl(var(--accent))]"
+      style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 300, lineHeight: 1 }}
+    >
+      {num}
+    </p>
+    <p className="text-eyebrow text-[hsl(var(--muted-foreground))] mt-2" style={{ letterSpacing: "0.2em" }}>
+      {label}
+    </p>
+  </div>
+);
+
+// ── Teaser card (experiences, etc.) ──────────────────────────────────────────
+const TeaserCard = ({ title, sub, image, href }: { title: string; sub: string; image: string; href: string }) => (
+  <Link to={href} className="group block relative overflow-hidden" style={{ aspectRatio: "4/5" }}>
+    <img
+      src={image}
+      alt={title}
+      className="img-cover transition-transform duration-[1200ms] ease-[cubic-bezier(.76,0,.24,1)] group-hover:scale-105"
+    />
+    <div className="absolute inset-0 bg-gradient-to-t from-[hsl(210_22%_8%/0.72)] via-transparent to-transparent" />
+    <div className="absolute bottom-0 left-0 right-0 p-6">
+      <p className="text-eyebrow text-[hsl(var(--accent))] mb-2" style={{ letterSpacing: "0.22em" }}>{sub}</p>
+      <h3 className="font-serif text-white text-2xl font-light">{title}</h3>
+    </div>
+  </Link>
+);
+
+// ── Home page ────────────────────────────────────────────────────────────────
+const Home = () => (
+  <>
+    <Helmet>
+      <title>Luxora Hotel, Lodwar | Boutique Luxury Hotel Adjacent to Lodwar Airport</title>
+      <meta name="description" content="Experience quiet luxury at Luxora Hotel, Lodwar — a boutique hotel with 36 elegant rooms adjacent to Lodwar Airport. Standard Double, Superior Double & Twin accommodation in Turkana County, Kenya." />
+      <link rel="canonical" href="https://luxorahotels.co.ke/" />
+      <meta property="og:title" content="Luxora Hotel, Lodwar | Boutique Luxury Hotel" />
+      <meta property="og:description" content="Experience luxury at Luxora Hotel, Lodwar — adjacent to Lodwar Airport in Northern Kenya." />
+      <meta property="og:type" content="website" />
+      <meta property="og:image" content="https://luxorahotels.co.ke/og-home.jpg" />
+      <script type="application/ld+json">{JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": ["Hotel", "LocalBusiness"],
+        "name": "Luxora Hotel, Lodwar",
+        "description": "Boutique luxury hotel adjacent to Lodwar Airport, Turkana County, Kenya.",
+        "url": "https://luxorahotels.co.ke",
+        "telephone": "+254110463062",
+        "email": "info@luxorahotels.co.ke",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Adjacent to Lodwar Airport",
+          "addressLocality": "Lodwar",
+          "addressRegion": "Turkana County",
+          "addressCountry": "KE"
+        },
+        "numberOfRooms": 36,
+        "checkinTime": "14:00",
+        "checkoutTime": "11:00"
+      })}</script>
+    </Helmet>
+
+    <ScrollReveal />
+    <div className="min-h-screen bg-[hsl(var(--background))]">
+      <Header />
+      <OpeningSoonBanner />
+
+      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      <PageHero
+        eyebrow="Lodwar, Turkana County, Kenya"
+        headline={"Where the\nDesert Meets\nElegance"}
+        sub="A boutique hotel experience of genuine warmth, thoughtful comfort, and the timeless light of Northern Kenya — just moments from Lodwar Airport."
+        ctaLabel="Reserve Your Stay"
+        ctaHref="/reservations"
+        image={heroImg}
+        imageAlt="Luxora Hotel, Lodwar — exterior and grounds"
+        showStrip
       />
 
-      {/* Keyframe injection */}
-      <style>{`
-        @keyframes shimmer {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
-        }
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&display=swap');
-      `}</style>
-    </div>
-  );
-};
-
-const Home = () => {
-  // ✅ Image Arrays (using raw GitHub URLs)
-  const standardImages = [
-    "https://raw.githubusercontent.com/VictorNdiritu/luxora-lodwar-escape-69078/main/src/assets/new-images/superior%20d.png",
-    "https://raw.githubusercontent.com/VictorNdiritu/luxora-lodwar-escape-69078/main/src/assets/new-images/sup.png",
-    "https://raw.githubusercontent.com/VictorNdiritu/luxora-lodwar-escape-69078/main/src/assets/new-images/sup%20Double.png",
-  ];
-
-  const superiorImages = [
-    "https://raw.githubusercontent.com/VictorNdiritu/luxora-lodwar-escape-69078/main/src/assets/new-images/sdr.png",
-    "https://raw.githubusercontent.com/VictorNdiritu/luxora-lodwar-escape-69078/main/src/assets/new-images/sup%20Double.png",
-    "https://raw.githubusercontent.com/VictorNdiritu/luxora-lodwar-escape-69078/main/src/assets/new-images/Superior%20Double%20.png",
-  ];
-
-  // ✅ Carousel State
-  const [standardIndex, setStandardIndex] = useState(0);
-  const [superiorIndex, setSuperiorIndex] = useState(0);
-
-  // ✅ Manual navigation
-  const nextImage = (setter, current, total) => {
-    setter((current + 1) % total);
-  };
-
-  const prevImage = (setter, current, total) => {
-    setter((current - 1 + total) % total);
-  };
-
-  // ✅ Auto-slide every 4 seconds
-  useEffect(() => {
-    const standardTimer = setInterval(() => {
-      setStandardIndex((prev) => (prev + 1) % standardImages.length);
-    }, 4000);
-
-    const superiorTimer = setInterval(() => {
-      setSuperiorIndex((prev) => (prev + 1) % superiorImages.length);
-    }, 4000);
-
-    return () => {
-      clearInterval(standardTimer);
-      clearInterval(superiorTimer);
-    };
-  }, [standardImages.length, superiorImages.length]);
-
-  return (
-    <>
-      <Helmet>
-        <title>
-          Luxora Hotel, Lodwar | Boutique Luxury Hotel Adjacent to Lodwar Airport
-        </title>
-        <meta
-          name="description"
-          content="Experience luxury at Luxora Hotel, Lodwar - A boutique hotel with 36 elegant rooms adjacent to Lodwar Airport. Featuring Standard, Superior, and Twin accommodations with modern amenities."
-        />
-        <link rel="canonical" href="https://luxorahotels.co.ke/" />
-        <meta
-          property="og:title"
-          content="Luxora Hotel, Lodwar | Boutique Luxury Hotel"
-        />
-        <meta
-          property="og:description"
-          content="Experience luxury at Luxora Hotel, Lodwar - Adjacent to Lodwar Airport in Northern Kenya."
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
-
-      <div className="min-h-screen bg-[#fbfcfb]">
-        <Header />
-
-        {/* ✨ Opening Soon Banner — sits just below the header */}
-        <OpeningSoonBanner />
-
-        <Hero />
-
-        {/* About Preview */}
-        <section className="py-20 bg-card">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+      {/* ── INTRO ────────────────────────────────────────────────────────── */}
+      <section className="section-pad bg-[hsl(var(--background))]">
+        <div className="container mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            <div className="reveal">
+              <p className="text-eyebrow text-[hsl(var(--accent))] mb-5" style={{ letterSpacing: "0.25em" }}>
                 Welcome to Luxora
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Your premier boutique hotel in Lodwar, offering unmatched luxury
-                and convenience just steps away from Lodwar Airport. Experience
-                world-class hospitality in the heart of Turkana County.
               </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-8">
-              <div className="text-center p-6 rounded-lg bg-muted/30 hover:bg-muted/50 transition-all duration-300">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent mb-4">
-                  <Building2 className="w-8 h-8 text-accent-foreground" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  2 Floors
-                </h3>
-                <p className="text-muted-foreground">
-                  Modern architecture designed for comfort
-                </p>
-              </div>
-
-              <div className="text-center p-6 rounded-lg bg-muted/30 hover:bg-muted/50 transition-all duration-300">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent mb-4">
-                  <Bed className="w-8 h-8 text-accent-foreground" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  36 Rooms
-                </h3>
-                <p className="text-muted-foreground">
-                  14 Standard Double, 14 Superior Double & 8 Twin
-                </p>
-              </div>
-
-              <div className="text-center p-6 rounded-lg bg-muted/30 hover:bg-muted/50 transition-all duration-300">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent mb-4">
-                  <MapPin className="w-8 h-8 text-accent-foreground" />
-                </div>
-                <h3 className="text-2xl font-bold text-foreground mb-2">
-                  Prime Location
-                </h3>
-                <p className="text-muted-foreground">
-                  Just 10 minutes from Lodwar Airport
-                </p>
-              </div>
-            </div>
-
-            <div className="text-center">
-              <Link to="/about">
-                <Button variant="outline" size="lg">
-                  Learn More About Us
-                </Button>
+              <h2 className="text-headline mb-6">
+                Lodwar's Premier Boutique Hotel
+              </h2>
+              <span className="gold-rule" />
+              <p className="text-lead text-[hsl(var(--muted-foreground))] mb-6">
+                Luxora Hotel, Lodwar was founded with a vision to bring world-class hospitality to the heart of Turkana County. Our boutique hotel represents a perfect blend of modern luxury and authentic Kenyan warmth, designed for both the business traveller and the curious explorer.
+              </p>
+              <p className="text-lead text-[hsl(var(--muted-foreground))] mb-10">
+                Strategically located adjacent to Lodwar Airport, we offer unparalleled convenience combined with an intimacy that only a boutique property can provide.
+              </p>
+              <Link to="/about" className="btn-outline">
+                <span>Our Story</span>
               </Link>
             </div>
-          </div>
-        </section>
 
-        {/* Rooms Preview */}
-        <section className="py-20 bg-muted/30">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Our Accommodation
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Choose from our carefully designed Standard and Superior rooms,
-                each offering modern amenities and exceptional comfort for your
-                stay.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-8">
-              {/* Standard Double Room */}
-              <div className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 relative">
-                <img
-                  src={standardImages[standardIndex]}
-                  alt="Standard Double Room"
-                  className="w-full h-64 object-cover transition-all duration-700 ease-in-out"
-                />
-                <button
-                  onClick={() =>
-                    prevImage(
-                      setStandardIndex,
-                      standardIndex,
-                      standardImages.length
-                    )
-                  }
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/40 text-white p-2 rounded-full"
-                >
-                  ‹
-                </button>
-                <button
-                  onClick={() =>
-                    nextImage(
-                      setStandardIndex,
-                      standardIndex,
-                      standardImages.length
-                    )
-                  }
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/40 text-white p-2 rounded-full"
-                >
-                  ›
-                </button>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
-                    Standard Double Room
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    Spacious rooms with queen-size beds, modern furnishings, and
-                    stunning views. Perfect for couples or guests seeking extra
-                    comfort.
-                  </p>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• 2 Guests • En-suite Bathroom • Smart TV</li>
-                    <li>• Mini-fridge • Work Desk • Premium Bedding</li>
-                  </ul>
+            {/* Stats */}
+            <div className="reveal-stagger grid grid-cols-2 gap-px bg-[hsl(var(--border))]">
+              {[
+                { num: "36", label: "Elegant Rooms" },
+                { num: "2",  label: "Floors" },
+                { num: "10", label: "Min from Airport" },
+                { num: "24", label: "Hour Service" },
+              ].map((s) => (
+                <div key={s.num} className="bg-[hsl(var(--background))] py-12 px-8 flex items-center justify-center">
+                  <Stat {...s} />
                 </div>
-              </div>
-
-              {/* Superior Double Room */}
-              <div className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 relative">
-                <img
-                  src={superiorImages[superiorIndex]}
-                  alt="Superior Double Room"
-                  className="w-full h-64 object-cover transition-all duration-700 ease-in-out"
-                />
-                <button
-                  onClick={() =>
-                    prevImage(
-                      setSuperiorIndex,
-                      superiorIndex,
-                      superiorImages.length
-                    )
-                  }
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/40 text-white p-2 rounded-full"
-                >
-                  ‹
-                </button>
-                <button
-                  onClick={() =>
-                    nextImage(
-                      setSuperiorIndex,
-                      superiorIndex,
-                      superiorImages.length
-                    )
-                  }
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/40 text-white p-2 rounded-full"
-                >
-                  ›
-                </button>
-                <div className="p-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
-                    Superior Double Room
-                  </h3>
-                  <p className="text-muted-foreground mb-4">
-                    Elegant and spacious, our Superior Double Rooms offer
-                    refined comfort, plush bedding, and serene ambiance ideal
-                    for business or leisure.
-                  </p>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• 2 Guests • En-suite Bathroom • Smart TV</li>
-                    <li>• Mini-fridge • Work Desk • Premium Bedding</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-center">
-              <Link to="/rooms">
-                <Button variant="outline" size="lg" className="mr-4">
-                  View All Rooms
-                </Button>
-              </Link>
-              <Link to="/reservations">
-                <Button variant="luxury" size="lg">
-                  Reserve Now
-                </Button>
-              </Link>
+              ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Amenities Preview */}
-        <section className="py-20 bg-card">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Premium Amenities
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Enjoy world-class facilities designed to make your stay
-                unforgettable
-              </p>
-            </div>
+      {/* ── ROOMS ────────────────────────────────────────────────────────── */}
+      <section className="bg-[hsl(var(--muted))]" style={{ paddingTop: "6rem" }}>
+        <div className="container mx-auto px-6 text-center mb-16 reveal">
+          <p className="text-eyebrow text-[hsl(var(--accent))] mb-4" style={{ letterSpacing: "0.25em" }}>
+            Accommodation
+          </p>
+          <h2 className="text-headline mb-4">Rooms & Suites</h2>
+          <span className="gold-rule-center" />
+          <p className="text-lead text-[hsl(var(--muted-foreground))] mx-auto">
+            36 thoughtfully appointed rooms across two floors — each a private sanctuary of comfort and calm.
+          </p>
+        </div>
 
-            <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
-              <div className="text-center p-4">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/20 mb-3">
-                  <Utensils className="w-6 h-6 text-accent" />
-                </div>
-                <p className="text-sm font-semibold text-foreground">
-                  Restaurant & Bar
+        <div className="flex flex-col">
+          <RoomCard
+            title="Standard Double Room"
+            sub="Spacious rooms with queen-size beds, modern furnishings and en-suite bathrooms. Perfect for couples or guests seeking exceptional comfort at an accessible price."
+            count="14 Rooms Available"
+            image={standardDouble1}
+            slug="standard-double"
+          />
+          <RoomCard
+            title="Superior Double Room"
+            sub="Elevated comfort with king-size beds, refined décor and a serene ambiance — ideal for discerning travellers seeking a heightened sense of occasion."
+            count="14 Rooms Available"
+            image={superiorDouble1}
+            slug="superior-double"
+            flip
+          />
+          <RoomCard
+            title="Standard Twin Room"
+            sub="Two generous single beds, designed with the pragmatic traveller in mind — spacious, well-appointed and quietly elegant."
+            count="8 Rooms Available"
+            image={twinRoom1}
+            slug="standard-twin"
+          />
+        </div>
+
+        <div className="text-center py-16">
+          <Link to="/rooms" className="btn-primary">
+            <span>Explore All Rooms</span>
+          </Link>
+        </div>
+      </section>
+
+      {/* ── AMENITIES STRIP ──────────────────────────────────────────────── */}
+      <section className="section-pad-sm bg-[hsl(var(--foreground))]">
+        <div className="container mx-auto px-6">
+          <div className="reveal-stagger grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 max-w-5xl mx-auto text-center">
+            {[
+              { icon: "🍽", label: "Restaurant & Bar" },
+              { icon: "📶", label: "High-Speed WiFi" },
+              { icon: "✈", label: "Airport Transfer" },
+              { icon: "🛎", label: "24/7 Concierge" },
+              { icon: "🚗", label: "Free Parking" },
+              { icon: "🏢", label: "Conference Hall" },
+            ].map(({ icon, label }) => (
+              <div key={label} className="flex flex-col items-center gap-3">
+                <span className="text-2xl" aria-hidden="true">{icon}</span>
+                <p
+                  className="text-eyebrow text-[hsl(var(--background))/0.6]"
+                  style={{ fontSize: "0.575rem", letterSpacing: "0.18em" }}
+                >
+                  {label}
                 </p>
               </div>
-              <div className="text-center p-4">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/20 mb-3">
-                  <Wifi className="w-6 h-6 text-accent" />
-                </div>
-                <p className="text-sm font-semibold text-foreground">
-                  High-Speed WiFi
-                </p>
-              </div>
-              <div className="text-center p-4">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/20 mb-3">
-                  <Car className="w-6 h-6 text-accent" />
-                </div>
-                <p className="text-sm font-semibold text-foreground">
-                  Airport Transfer
-                </p>
-              </div>
-              <div className="text-center p-4">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/20 mb-3">
-                  <Users className="w-6 h-6 text-accent" />
-                </div>
-                <p className="text-sm font-semibold text-foreground">
-                  24/7 Service
-                </p>
-              </div>
-              <div className="text-center p-4">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/20 mb-3">
-                  <Car className="w-6 h-6 text-accent" />
-                </div>
-                <p className="text-sm font-semibold text-foreground">
-                  Free Parking
-                </p>
-              </div>
-              <div className="text-center p-4">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/20 mb-3">
-                  <Mail className="w-6 h-6 text-accent" />
-                </div>
-                <p className="text-sm font-semibold text-foreground">
-                  Concierge
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
-        </section>
-
-        <Excursions />
-        <MICE />
-
-        {/* CTA */}
-        <section className="py-20 bg-gradient-to-b from-accent/10 to-background">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-              Ready to Experience Luxora?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Book your stay today and discover why Luxora is Lodwar's premier
-              boutique hotel destination.
-            </p>
-            <Link to="/reservations">
-              <Button variant="luxury" size="lg" className="text-lg px-10 py-6">
-                Reserve Your Stay
-              </Button>
+          <div className="text-center mt-10">
+            <Link
+              to="/amenities"
+              className="text-eyebrow text-[hsl(var(--accent))] hover:underline tracking-widest inline-flex items-center gap-2"
+              style={{ fontSize: "0.6rem" }}
+            >
+              <span>Explore All Facilities & Amenities →</span>
             </Link>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <Footer />
-      </div>
-    </>
-  );
-};
+      {/* ── DINING TEASER ─────────────────────────────────────────────────── */}
+      <section className="section-pad bg-[hsl(var(--background))]">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="relative overflow-hidden reveal" style={{ minHeight: "500px" }}>
+              <img
+                src={restaurantImg}
+                alt="Luxora Restaurant"
+                className="img-cover hover:scale-105 transition-transform duration-[1200ms] ease-[cubic-bezier(.76,0,.24,1)]"
+              />
+              <div className="absolute bottom-6 right-6 bg-[hsl(var(--background))] p-4">
+                <p className="text-eyebrow text-[hsl(var(--accent))]" style={{ letterSpacing: "0.2em", fontSize: "0.6rem" }}>
+                  Open Daily
+                </p>
+              </div>
+            </div>
+            <div className="reveal">
+              <p className="text-eyebrow text-[hsl(var(--accent))] mb-5" style={{ letterSpacing: "0.25em" }}>
+                Dining
+              </p>
+              <h2 className="text-headline mb-6">Restaurant & Bar</h2>
+              <span className="gold-rule" />
+              <p className="text-lead text-[hsl(var(--muted-foreground))] mb-4">
+                Our restaurant celebrates the flavours of Kenya and the wider region, offering a thoughtfully curated menu of local and international cuisine in an atmosphere of relaxed elegance.
+              </p>
+              <p className="text-lead text-[hsl(var(--muted-foreground))] mb-10">
+                Whether a working breakfast before an early flight or a leisurely dinner under the Turkana sky, every meal at Luxora is an occasion.
+              </p>
+              <div className="flex flex-wrap gap-4 items-center">
+                <Link to="/dining" className="btn-primary">
+                  <span>Explore Dining & Bar</span>
+                </Link>
+                <Link to="/contact" className="btn-outline">
+                  <span>Enquire About Dining</span>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── EXPERIENCES TEASER ───────────────────────────────────────────── */}
+      <section className="section-pad bg-[hsl(var(--muted))]">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16 reveal">
+            <p className="text-eyebrow text-[hsl(var(--accent))] mb-4" style={{ letterSpacing: "0.25em" }}>
+              Experiences
+            </p>
+            <h2 className="text-headline mb-4">Discover Turkana</h2>
+            <span className="gold-rule-center" />
+            <p className="text-lead text-[hsl(var(--muted-foreground))] mx-auto">
+              From volcanic islands to ancient standing stones — Turkana County is one of the world's most extraordinary landscapes.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-4 max-w-5xl mx-auto reveal-stagger">
+            <TeaserCard
+              title="Turkana Cultural Village"
+              sub="Half Day"
+              image={turkanaVillage}
+              href="/experiences"
+            />
+            <TeaserCard
+              title="Eliye Springs"
+              sub="Full Day"
+              image={eliyeSprings}
+              href="/experiences"
+            />
+          </div>
+
+          <div className="text-center mt-12 reveal">
+            <Link to="/experiences" className="btn-outline">
+              <span>All Experiences</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── MICE TEASER ──────────────────────────────────────────────────── */}
+      <section className="section-pad bg-[hsl(var(--background))]">
+        <div className="container mx-auto px-6 max-w-6xl">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="reveal">
+              <p className="text-eyebrow text-[hsl(var(--accent))] mb-5" style={{ letterSpacing: "0.25em" }}>
+                Events & MICE
+              </p>
+              <h2 className="text-headline mb-6">Host Your Next Event at Luxora</h2>
+              <span className="gold-rule" />
+              <p className="text-lead text-[hsl(var(--muted-foreground))] mb-4">
+                Where professionalism meets unparalleled comfort. Luxora Hotel is your premier destination for corporate retreats, strategic team-building experiences, and impactful business gatherings in Northern Kenya.
+              </p>
+              <p className="text-lead text-[hsl(var(--muted-foreground))] mb-4">
+                Conference hall capacity up to 200 guests. Multiple breakout rooms, state-of-the-art AV, dedicated fibre, and gourmet catering.
+              </p>
+              <p className="text-sm italic text-[hsl(var(--muted-foreground))] mb-10">
+                Ideal for NGO gatherings, corporate training, product launches and executive retreats.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link to="/mice" className="btn-primary">
+                  <span>Plan Your Event</span>
+                </Link>
+                <Link to="/contact" className="btn-outline">
+                  <span>Request a Proposal</span>
+                </Link>
+              </div>
+            </div>
+            <div className="relative overflow-hidden reveal" style={{ minHeight: "500px" }}>
+              <img
+                src={miceImg}
+                alt="Luxora Conference and Meeting Facilities"
+                className="img-cover hover:scale-105 transition-transform duration-[1200ms] ease-[cubic-bezier(.76,0,.24,1)]"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CLOSING CTA ──────────────────────────────────────────────────── */}
+      <section
+        className="section-pad relative overflow-hidden flex items-center justify-center text-center"
+        style={{
+          background: "hsl(var(--foreground))",
+          minHeight: "380px",
+        }}
+      >
+        {/* Subtle gold accent */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 60% at 50% 100%, hsl(38 45% 48% / 0.12), transparent)",
+          }}
+        />
+        <div className="relative z-10 max-w-2xl mx-auto px-6 reveal">
+          <p className="text-eyebrow text-[hsl(var(--accent))] mb-6" style={{ letterSpacing: "0.28em" }}>
+            Luxora Hotel, Lodwar
+          </p>
+          <h2
+            className="font-serif text-[hsl(var(--background))] mb-6"
+            style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 300 }}
+          >
+            Your Turkana Experience Begins Here
+          </h2>
+          <span className="block w-8 h-px bg-[hsl(var(--accent))] mx-auto mb-8" />
+          <p className="text-lead text-[hsl(var(--background))/0.6] mb-10 mx-auto">
+            Reserve directly with us for the best available rate and a personalised welcome.
+          </p>
+          <Link to="/reservations" className="btn-gold">
+            <span>Reserve Your Stay</span>
+          </Link>
+        </div>
+      </section>
+
+      {/* ── LOCATION STRIP ───────────────────────────────────────────────── */}
+      <section className="section-pad-sm bg-[hsl(var(--muted))]">
+        <div className="container mx-auto px-6 max-w-4xl text-center reveal">
+          <p className="text-eyebrow text-[hsl(var(--accent))] mb-4" style={{ letterSpacing: "0.25em" }}>
+            Find Us
+          </p>
+          <h3 className="font-serif text-2xl mb-4 font-light">
+            Adjacent to Lodwar Airport, Turkana County, Kenya
+          </h3>
+          <span className="gold-rule-center" />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-6 text-sm text-[hsl(var(--muted-foreground))]">
+            <a href="tel:+254110463062" className="link-underline hover:text-[hsl(var(--foreground))] transition-colors">
+              +254 110 463 062
+            </a>
+            <span className="hidden sm:block w-px h-4 bg-[hsl(var(--border))]" />
+            <a href="mailto:info@luxorahotels.co.ke" className="link-underline hover:text-[hsl(var(--foreground))] transition-colors">
+              info@luxorahotels.co.ke
+            </a>
+            <span className="hidden sm:block w-px h-4 bg-[hsl(var(--border))]" />
+            <Link to="/contact" className="link-underline hover:text-[hsl(var(--foreground))] transition-colors">
+              Get Directions
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
+    </div>
+  </>
+);
 
 export default Home;

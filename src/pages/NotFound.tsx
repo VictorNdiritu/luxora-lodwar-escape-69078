@@ -3,39 +3,48 @@ import { useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Button } from "@/components/ui/button";
 
 const NotFound = () => {
   const location = useLocation();
 
   useEffect(() => {
-    console.error("404 Error: User attempted to access non-existent route:", location.pathname);
+    console.warn("404 Error: Non-existent route accessed:", location.pathname);
   }, [location.pathname]);
 
   return (
     <>
       <Helmet>
         <title>Page Not Found | Luxora Hotel, Lodwar</title>
-        <meta name="description" content="The page you're looking for cannot be found. Return to Luxora Hotel, Lodwar homepage." />
+        <meta name="description" content="The page you are looking for is unavailable. Return to Luxora Hotel, Lodwar." />
         <meta name="robots" content="noindex, follow" />
       </Helmet>
 
-      <div className="min-h-screen flex flex-col">
+      <div className="min-h-screen bg-[hsl(var(--background))] flex flex-col justify-between">
         <Header />
-        <div className="flex-1 flex items-center justify-center bg-background pt-24">
-          <div className="text-center px-4">
-            <h1 className="mb-4 text-6xl md:text-8xl font-bold text-foreground">404</h1>
-            <p className="mb-8 text-xl md:text-2xl text-muted-foreground">Oops! Page not found</p>
-            <p className="mb-8 text-muted-foreground max-w-md mx-auto">
-              The page you're looking for doesn't exist or has been moved.
+
+        <main className="flex-1 flex items-center justify-center pt-32 pb-24 px-6 text-center">
+          <div className="max-w-xl mx-auto">
+            <p className="text-eyebrow text-[hsl(var(--accent))] mb-4" style={{ letterSpacing: "0.25em" }}>
+              404 • Destination Not Found
             </p>
-            <Link to="/">
-              <Button variant="gold" size="lg">
-                Return to Home
-              </Button>
-            </Link>
+            <h1 className="font-serif text-5xl md:text-7xl font-light text-[hsl(var(--foreground))] mb-6">
+              Page Not Found
+            </h1>
+            <span className="gold-rule-center" />
+            <p className="text-lead text-[hsl(var(--muted-foreground))] mb-10 max-w-md mx-auto">
+              The page you are looking for does not exist or has been relocated within our new digital residence.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/" className="btn-primary">
+                <span>Return to Home</span>
+              </Link>
+              <Link to="/rooms" className="btn-outline">
+                <span>View Accommodations</span>
+              </Link>
+            </div>
           </div>
-        </div>
+        </main>
+
         <Footer />
       </div>
     </>

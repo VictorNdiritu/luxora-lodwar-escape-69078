@@ -1,106 +1,162 @@
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Calendar, ArrowRight } from "lucide-react";
-import { Helmet } from "react-helmet";
+import { BannerHero } from "@/components/PageHero";
+import { ScrollReveal } from "@/hooks/useScrollReveal";
+import heroImg from "@/assets/experiences/Central Turkana Desert Excursions.jpg";
+import eliyeImg from "@/assets/experiences/Eliye spirings.jpg";
+import { Calendar, Clock, ArrowRight } from "lucide-react";
+
+export const BLOG_POSTS = [
+  {
+    id: "turkana-road-trip-guide",
+    title: "The Ultimate Turkana Road Trip: An Adventurer's Guide to Kenya's Wild North",
+    excerpt: "There is something magnetic about Kenya's far north — endless horizons, raw desert beauty, and the feeling that you have left the world behind. Turkana is not merely a destination, it is an expedition into an ancient world.",
+    date: "October 30, 2025",
+    readTime: "8 min read",
+    category: "Expedition Guide",
+    image: heroImg,
+  },
+];
 
 const Blog = () => {
-  const blogPosts = [
-    {
-      id: "turkana-road-trip-guide",
-      title: "The Ultimate Turkana Road Trip: An Adventurer's Guide to Kenya's Wild North",
-      excerpt: "There is something magnetic about Kenya's far north - the endless horizons, raw desert beauty, and the feeling that you have left the world behind. Turkana is not just a destination, it is an adventure.",
-      date: "October 30, 2025",
-      readTime: "8 min read",
-      image: "/placeholder.svg"
-    }
-  ];
-
   return (
     <>
       <Helmet>
-        <title>Blog | Luxora Hotel, Lodwar - Travel Tips & Local Insights</title>
-        <meta name="description" content="Discover travel tips, adventure stories, and insider insights about Northern Kenya and the Turkana region from Luxora Hotel, Lodwar." />
+        <title>The Journal & Travel Guides | Luxora Hotel, Lodwar</title>
+        <meta
+          name="description"
+          content="Explore the Luxora Hotel journal: curated guides, road trip expeditions, local culture, and insider perspectives across Lodwar and the Lake Turkana basin."
+        />
         <link rel="canonical" href="https://luxorahotels.co.ke/blog" />
-        <meta property="og:title" content="Blog | Luxora Hotel, Lodwar" />
-        <meta property="og:description" content="Travel tips and adventure stories from Northern Kenya" />
+        <meta property="og:title" content="The Journal | Luxora Hotel, Lodwar" />
+        <meta property="og:description" content="Expedition guides and local insights from the gateway to Turkana." />
         <meta property="og:type" content="website" />
       </Helmet>
 
-      <div className="min-h-screen bg-background">
+      <ScrollReveal />
+      <div className="min-h-screen bg-[hsl(var(--background))]">
         <Header />
-        
-        <main>
-          {/* Hero Section */}
-          <section className="pt-32 pb-16 bg-gradient-to-b from-primary/5 to-background">
-            <div className="container mx-auto px-4">
-              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-                Luxora Travel Blog
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl">
-                Adventure stories, travel tips, and insider insights from Northern Kenya's premier destination
-              </p>
-            </div>
-          </section>
 
-          {/* Blog Posts Grid */}
-          <section className="py-16">
-            <div className="container mx-auto px-4">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {blogPosts.map((post) => (
-                  <article key={post.id} className="bg-card rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                    <div className="aspect-video bg-muted">
-                      <img 
-                        src={post.image} 
+        <BannerHero
+          eyebrow="Chronicles & Guides"
+          headline="The Turkana Journal"
+          image={heroImg}
+          imageAlt="Turkana desert landscape — Luxora Hotel Journal"
+        />
+
+        {/* Editorial introduction */}
+        <section className="section-pad-sm bg-[hsl(var(--background))] text-center">
+          <div className="container mx-auto px-6 max-w-3xl reveal">
+            <p className="text-eyebrow text-[hsl(var(--accent))] mb-4" style={{ letterSpacing: "0.25em" }}>
+              Stories from Northern Kenya
+            </p>
+            <h2 className="text-headline mb-6">Perspectives on the Wild North</h2>
+            <span className="gold-rule-center" />
+            <p className="text-lead text-[hsl(var(--muted-foreground))] mx-auto">
+              Reflections on culture, expedition planning, and desert tranquility from our home in Lodwar. Curated for the inquisitive traveler.
+            </p>
+          </div>
+        </section>
+
+        {/* Featured Stories Grid */}
+        <section className="section-pad bg-[hsl(var(--card))] border-t border-b border-[hsl(var(--border))]">
+          <div className="container mx-auto px-6 max-w-6xl">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+              {BLOG_POSTS.map((post) => (
+                <article
+                  key={post.id}
+                  className="bg-[hsl(var(--background))] border border-[hsl(var(--border))] group flex flex-col justify-between overflow-hidden reveal"
+                >
+                  <div>
+                    <div className="relative overflow-hidden aspect-[16/10]">
+                      <img
+                        src={post.image}
                         alt={post.title}
-                        className="w-full h-full object-cover"
+                        className="img-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(.76,0,.24,1)]"
                       />
+                      <div className="absolute top-4 left-4 bg-[hsl(var(--background))] px-3 py-1">
+                        <span className="text-eyebrow text-[hsl(var(--accent))]" style={{ fontSize: "0.55rem", letterSpacing: "0.18em" }}>
+                          {post.category}
+                        </span>
+                      </div>
                     </div>
-                    <div className="p-6">
-                      <div className="flex items-center gap-4 text-sm text-muted-foreground mb-3">
-                        <span className="flex items-center gap-1">
-                          <Calendar size={16} />
+
+                    <div className="p-8">
+                      <div className="flex items-center gap-4 text-xs text-[hsl(var(--muted-foreground))] mb-4">
+                        <span className="flex items-center gap-1.5">
+                          <Calendar className="w-3.5 h-3.5 text-[hsl(var(--accent))]" />
                           {post.date}
                         </span>
-                        <span>{post.readTime}</span>
+                        <span>•</span>
+                        <span className="flex items-center gap-1.5">
+                          <Clock className="w-3.5 h-3.5 text-[hsl(var(--accent))]" />
+                          {post.readTime}
+                        </span>
                       </div>
-                      <h2 className="text-2xl font-bold text-foreground mb-3 line-clamp-2">
-                        {post.title}
-                      </h2>
-                      <p className="text-muted-foreground mb-4 line-clamp-3">
+
+                      <h3 className="font-serif text-2xl font-light leading-snug mb-4 group-hover:text-[hsl(var(--accent))] transition-colors">
+                        <Link to={`/blog/${post.id}`}>{post.title}</Link>
+                      </h3>
+
+                      <p className="text-sm font-light text-[hsl(var(--muted-foreground))] leading-relaxed line-clamp-3 mb-6">
                         {post.excerpt}
                       </p>
-                      <Link to={`/blog/${post.id}`}>
-                        <Button variant="outline" className="group">
-                          Read More
-                          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </Link>
                     </div>
-                  </article>
-                ))}
+                  </div>
+
+                  <div className="px-8 pb-8 pt-0">
+                    <Link
+                      to={`/blog/${post.id}`}
+                      className="inline-flex items-center gap-2 text-eyebrow text-[hsl(var(--foreground))] hover:text-[hsl(var(--accent))] transition-colors"
+                      style={{ fontSize: "0.625rem", letterSpacing: "0.2em" }}
+                    >
+                      <span>Read Full Story</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </div>
+                </article>
+              ))}
+
+              {/* Complimentary Editorial Teaser Card */}
+              <div className="bg-[hsl(var(--background))] border border-dashed border-[hsl(var(--border))] p-8 flex flex-col justify-center text-center reveal">
+                <p className="text-eyebrow text-[hsl(var(--accent))] mb-3" style={{ letterSpacing: "0.2em" }}>
+                  Upcoming Issue
+                </p>
+                <h3 className="font-serif text-xl mb-3">Eliye Springs & The Jade Sea</h3>
+                <p className="text-xs text-[hsl(var(--muted-foreground))] leading-relaxed mb-6">
+                  Our forthcoming guide on coastal breezes, natural freshwater palm springs, and navigating the shorelines of Lake Turkana.
+                </p>
+                <Link to="/contact" className="text-eyebrow text-[hsl(var(--accent))] hover:underline" style={{ fontSize: "0.6rem", letterSpacing: "0.18em" }}>
+                  Inquire With Concierge
+                </Link>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
 
-          {/* CTA Section */}
-          <section className="py-16 bg-primary/5">
-            <div className="container mx-auto px-4 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Ready for Your Turkana Adventure?
-              </h2>
-              <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-                Let Luxora be your gateway to Kenya's wild north
-              </p>
-              <Link to="/contact">
-                <Button variant="gold" size="lg">
-                  Reserve Your Stay
-                </Button>
+        {/* Editorial Closing CTA */}
+        <section className="section-pad bg-[hsl(var(--foreground))] text-[hsl(var(--background))] text-center">
+          <div className="container mx-auto px-6 max-w-3xl reveal">
+            <p className="text-eyebrow text-[hsl(var(--accent))] mb-4" style={{ letterSpacing: "0.25em" }}>
+              Begin Your Journey
+            </p>
+            <h2 className="text-headline mb-6 text-white">Experience Turkana First-Hand</h2>
+            <span className="gold-rule-center" />
+            <p className="text-lead text-[hsl(var(--background))/0.65] mb-10 mx-auto">
+              Let Luxora Hotel Lodwar be your luxurious base as you discover the cradle of mankind and the timeless desert landscapes of Northern Kenya.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-5 justify-center">
+              <Link to="/reservations" className="btn-gold">
+                <span>Reserve Your Stay</span>
+              </Link>
+              <Link to="/experiences" className="btn-outline-white">
+                <span>Explore Excursions</span>
               </Link>
             </div>
-          </section>
-        </main>
+          </div>
+        </section>
 
         <Footer />
       </div>
