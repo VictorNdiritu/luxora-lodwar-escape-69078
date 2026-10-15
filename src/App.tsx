@@ -50,6 +50,15 @@ const App = () => (
             <Route path="/policies" element={<Policies />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
+            {/* Direct aliases for newly added blog markdown pages */}
+            <Route path="/Blog_1" element={<BlogPost directSlug="turkana-packing-travel-guide" />} />
+            <Route path="/blog_1" element={<BlogPost directSlug="turkana-packing-travel-guide" />} />
+            <Route path="/Blog-1" element={<BlogPost directSlug="turkana-packing-travel-guide" />} />
+            <Route path="/blog-1" element={<BlogPost directSlug="turkana-packing-travel-guide" />} />
+            <Route path="/Blog_2" element={<BlogPost directSlug="exploring-turkana-places-to-visit" />} />
+            <Route path="/blog_2" element={<BlogPost directSlug="exploring-turkana-places-to-visit" />} />
+            <Route path="/Blog-2" element={<BlogPost directSlug="exploring-turkana-places-to-visit" />} />
+            <Route path="/blog-2" element={<BlogPost directSlug="exploring-turkana-places-to-visit" />} />
             {/* Catch-all route */}
             <Route path="*" element={<NotFound />} />
           </Routes>
